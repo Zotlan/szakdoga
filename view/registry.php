@@ -14,10 +14,12 @@
 
 
     <form action="index.php" method="post">
+        Email:
+        <input type="text" name="email" placeholder="Please Enter Your Username" required><br>
         Username: <br>
-        <input type="text" name="felnev" placeholder="Please Enter Your Username" required><br>
+        <input type="text" name="username" placeholder="Please Enter Your Username" required><br>
         Password: <br>
-        <input type="password" name="jelszo" placeholder="Please Enter Your Password" required"><br>
+        <input type="password" name="password" placeholder="Please Enter Your Password" required"><br>
         <input type="submit">
         <input type="hidden" name="action" value="login">
         <input type="hidden" name="page" value="user">
