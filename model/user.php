@@ -13,15 +13,15 @@ class User{
         $this->db=$db;
     }
 
-    public function checkLogin($user_name, $password){
-        $sql = "SELECT * FROM user WHERE username = '".$_POST['user_name']."'";
+    public function checkLogin($username, $password){
+        $sql = "SELECT * FROM user WHERE username = '".$_POST['username']."'";
         // van ilyen felhasznalo?
         if($result = $this->db->dbselect($sql)){
             if($row = $result->fetch_assoc()){
 
             
                 //checks if the password is correct... it hopefully works
-                if($row['password'] == md5($password)){
+                if($row['password'] == $password){
                     $eredmeny = 2 ;//success
                     $_SESSION["user_name"] = $row['username'];
                     $_SESSION["id"] = $row['user_id'];
@@ -38,7 +38,16 @@ class User{
 
 
     }
+
+    public function registerStudent(){
+
+
+    }
     
+    public function registerTeacher(){
+
+        
+    }
 }
 
 

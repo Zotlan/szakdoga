@@ -15,27 +15,28 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php" style="color: goldenrod;">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: goldenrod;">Chat</a>
+                    <a class="nav-link" href="" style="color: goldenrod;">Chat</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: goldenrod;">
-                    Forum
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: black;">
-                        <?php
-                        echo '<a class="dropdown-item" href="index.php?page=forum" style="color: goldenrod;">Main</a>';
-                        echo '<a class="dropdown-item" href="#" style="color: goldenrod;">Math</a>';
-                        echo '<a class="dropdown-item" href="#" style="color: goldenrod;">Literature</a>';
-                        echo '<a class="dropdown-item" href="#" style="color: goldenrod;">Biology</a>';
-                        ?>
+                <li>
+                <div class="btn-group">
+                        <a href="index.php?page=forum">
+                            <button type="button" class="btn">Forum</button>
+                        </a>
+                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <?php
+                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Math</a>';
+                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Literature</a>';
+                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Biology</a>';
+                            ?>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: goldenrod;">Profile</a>
+                    <a class="nav-link" href="" style="color: goldenrod;">Profile</a>
                 </li>
                 <li>
                 <?php

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2023 at 05:32 PM
+-- Generation Time: Jan 22, 2023 at 10:31 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -123,6 +123,13 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `user_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `email`, `username`, `password`, `user_type`) VALUES
+(1, 'test@email.com', 'tester', 'testpass', 1);
 
 -- --------------------------------------------------------
 
@@ -252,7 +259,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

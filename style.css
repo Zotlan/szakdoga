@@ -5,3 +5,10 @@ body {
 a{
  color: goldenrod;
 }
+.btn{
+  background-color: black;
+  color: goldenrod;
+}
+.dropdown-menu{
+  background-color: black;
+}
