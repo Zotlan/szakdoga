@@ -15,40 +15,50 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="" style="color: goldenrod;">Chat</a>
-                </li>
-                <li>
-                <div class="btn-group">
-                        <a href="index.php?page=forum">
-                            <button type="button" class="btn">Forum</button>
-                        </a>
-                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <?php
-                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Math</a>';
-                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Literature</a>';
-                                echo '<a class="dropdown-item" href="" style="color: goldenrod;">Biology</a>';
-                            ?>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="" style="color: goldenrod;">Profile</a>
-                </li>
-                <li>
-                <?php
-                    if(isset($_SESSION['id'])){
-                        echo '<a class="nav-link" href="index.php?page=user&action=logout" style="color: goldenrod;">Logout</a>';
-                    }
-                    else{
-                        echo '<a class="nav-link" href="index.php?page=user&action=login" style="color: goldenrod;">Login</a>';
-                    }
+                    <li class="nav-item">
+                    <?php 
+                        if(isset($_SESSION['id'])){
+                            echo '<a class="nav-link" href="index.php?page=chat" style="color: goldenrod;">Chat</a>';
+                        }
                     ?>
-                    
-                </li>
+                    </li>
+                    <?php
+                        if(isset($_SESSION['id'])){
+                            echo '  <li>
+                                        <div class="btn-group">
+                                                      <a href="index.php?page=forum">
+                                                                <button type="button" class="btn">Forum</button>
+                                                            </a>
+                                            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only"></span>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                
+                                                        <a class="dropdown-item" href="index.php?page=forum&action=math" style="color: goldenrod;">Math</a>
+                                                        <a class="dropdown-item" href="index.php?page=forum&action=lit" style="color: goldenrod;">Literature</a>
+                                                        <a class="dropdown-item" href="index.php?page=forum&action=bio" style="color: goldenrod;">Biology</a>
+                                            </div>
+                                        </div>
+                                    </li>';
+                        }
+                    ?>
+                    <?php
+                        if(isset($_SESSION['id'])){
+                            echo '  <li class="nav-item">
+                                        <a class="nav-link" href="index.php?page=profile" style="color: goldenrod;">Profile</a>
+                                    </li>';
+                        }
+                    ?>
+                    <li>
+                        <?php
+                            if(isset($_SESSION['id'])){
+                                echo '<a class="nav-link" href="index.php?page=login&action=logout" style="color: goldenrod;">Logout</a>';
+                            }
+                            else{
+                                echo '<a class="nav-link" href="index.php?page=login&action=login" style="color: goldenrod;">Login/Registartion</a>';
+                            }
+                        ?>
+                    </li>
                 </ul>
             </div>
 </nav>
