@@ -3,6 +3,12 @@
     require 'model/user.php';
     $user= new User($db);
 
+    $email = "";
+
+    $nickname = "";
+
+    $password = "";
+
     $registry = "";
 
     $checkResult = "";
@@ -11,34 +17,51 @@
 
     $action = $_REQUEST['action'] ?? "";
 
-    $registryReaction = array(
-        "Registry Failed: Not a Real Email Address.",//0
-        "Registry Failed: This Email is Already in Use.",//1
-        "Registry Failed: The Username is Already in Use.",//2
-        "Registration Successful.",//3
+    $emailReaction = array(
+        "This email address is already in use.",//0
+        "Not a real email address.",//1
+
+    );
+    $passwordReaction = array(
+        "The password must be at least 8 characters long",//0
+        "The password must contain at least one number",//1
+        "The password must contain at least one uppercase letter",//2
+        "The password must contain at least one letter",//3
     );
 
     switch ($action){
         case 'student':
             if(isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])){
 
+                $email = $user->checkEmail($_POST['email']);//valid=2
 
-            $nickname = $user->checkNick($_POST['username']);
+                $nickname = $user->checkNick($_POST['username']);//valid=1
 
-            $password = $user->checkPassword($_POST['password']);
+                $password = $user->checkPassword($_POST['password']);//valid=4
 
-            $registry = $user->checkRegistryS($_POST['email'], $_POST['username']);
+                if($email != 2){
+                    echo $emailReaction[$email] . "<br>";
+                }
 
-            $checkResult = $registryReaction[$registry];
+                if($nickname != 1){
+                    echo "The Username is already in use" . "<br>";
+                }
+
+                if($password != 4){
+                    echo $passwordReaction[$password] . "<br>";
+                }
+
+                if($email == 2 && $nickname == 1 && $password == 4){
+                    $registry = 1;
+                }
             }
-        break;
-        case 'teacher':
 
+            if($registry == 1){
+                $user->registerStudent($_POST['email'], $_POST['username'], $_POST['password']);
+                echo "Registration Successful." . "<br>";
+            }
+            
         break;
     }
-    if($registry == 4){
-        $user->registerStudent($_POST['email'], $_POST['username'], $_POST['password']);
-    }
-    echo $checkResult . "<br>";
 
     require "view/registry.php";
