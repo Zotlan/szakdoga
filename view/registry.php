@@ -22,9 +22,23 @@
                         Username: <br>
                         <input type="text" name="username" placeholder="Please Enter Your Username" required><br>
                         Password: <br>
-                        <input type="password" name="password" placeholder="Please Enter Your Password" required"><br>
+                        <input type="password" name="password" placeholder="Please Enter Your Password" required><br>
                         <input type="submit">
                         <input type="hidden" name="action" value="student">
+                        <input type="hidden" name="page" value="registry">
+                    </form>';
+            break;
+            case 'teacher':
+                echo '
+                    <form action="index.php" method="post">
+                        Email: <br>
+                        <input type="text" name="email" placeholder="Please Enter Your Email Address" required><br>
+                        Username: <br>
+                        <input type="text" name="username" placeholder="Please Enter Your Username" required><br>
+                        Password: <br>
+                        <input type="password" name="password" placeholder="Please Enter Your Password" required"><br>
+                        <input type="submit">
+                        <input type="hidden" name="action" value="teacher">
                         <input type="hidden" name="page" value="registry">
                     </form>';
             break;

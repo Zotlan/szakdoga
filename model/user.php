@@ -42,29 +42,60 @@ class User{
 
     //this is for the student registration
     //checks if the email address, username and password all meet the predetermined requirements and that they aren't used already
-    public function checkRegistryS($user_Email, $user_Name, $user_Password){
-        //it doesn't check anything at the moment...
+    public function checkRegistryS($Email, $Username){
+        //it doesn't check whether or not the input data is compliant to the set requirements
+        //checks if something h
         $sql="SELECT * FROM user WHERE 1";
         if($result = $this->db->dbselect($sql)){
             if($row = $result->fetch_assoc()){
-                if($row['userEmail'] == $user_Name){
-                    $registryCheck = 2;
+                if($row['userEmail'] == $Email){
+                    $registryCheck = 1;
                 }
-                elseif($row['userName'] == $user_Name){
+                elseif($row['userName'] == $Username){
                     $registryCheck = 2;
-                }
-                elseif($row['userName'] == $user_Name){
-                    $registryCheck = 3;
                 }
                 else{
-                    $registryCheck=4;
+                    $registryCheck=3;
                 }
             }
         }
         return $registryCheck;
         }
+
+
+
+        public function checkNick(){
+
+
+
+
+
+
+
+        }
         
-    
+        public function checkPassword($Password){
+
+            if(strlen($Password) >= 8){
+                for ($i = 0; $i <= strlen($string)-1; $i++) {
+                    if(is_numeric($string[$i]))  {
+                       $containsNumber = 1;
+                       break;
+                    }
+                }
+            }
+            if(preg_match('/[A-Z]/', $domain)){
+                    
+            }
+
+
+
+
+
+
+
+
+        }
 
     //this function inserts the userdata
     public function registerStudent($user_Email, $user_Name, $user_Password){
