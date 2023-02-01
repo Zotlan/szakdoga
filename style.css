@@ -6,13 +6,109 @@ a{
  color: goldenrod;
 }
 .btn{
+  border-color: black;
   background-color: black;
+  color: goldenrod;
+}
+.btn:hover {
+  background-color: black;
+}
+.btn:active {
+  background-color: black;
+}
+.button-secondary:hover{
   color: goldenrod;
 }
 .dropdown-menu{
   background-color: black;
 }
-.sbutton{
-  color: goldenrod;
+.dropdown-item:hover{
   background-color: black;
+}
+.dropdown-divider{
+  border-color: goldenrod;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/*This is for the popup window from w3schools */
+* {box-sizing: border-box;}
+
+.open-button {
+  background-color: black;
+  color: goldenrod;
+  padding: 16px 20px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 16px;
+  width: 280px;
+}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  z-index: 9;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: black;
+}
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #101013;
+  resize: none;
+  min-height: 50px;
+}
+
+.form-container textarea:focus {
+  background-color: #1e1e21;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: white;
+  color: goldenrod;
+  padding: 16px 20px;
+  border: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .cancel {
+  background-color: red;
+  border: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
 }

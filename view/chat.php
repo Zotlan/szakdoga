@@ -1,5 +1,5 @@
 <?php
-include "layout/main_head.php";
+include "layout/head.php";
 ?>
 
 

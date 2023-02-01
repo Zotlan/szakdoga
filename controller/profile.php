@@ -8,7 +8,7 @@
 
     switch($action){
     case 'upload':
-        $target_dir = "uploads/";
+        $target_dir = "assets/profile_pictures/";
         $target_file = $target_dir. $_SESSION['username'].".jpg";
     
         if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
