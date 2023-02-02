@@ -25,9 +25,24 @@
                                 Password: <br>
                                 <input type="password" name="password" placeholder="Please Enter Your Password" required><br>
                                 <input type="submit">
+<<<<<<< Updated upstream
                                 <input type="hidden" name="action" value="student">
                                 <input type="hidden" name="page" value="registry">
                             </form>';
+=======
+<<<<<<< HEAD
+                                <input type="hidden" name="action" value="student">';
+                            //if (){
+                                echo '<input type="hidden" name="page" value="registry">
+
+                            </form>';
+                            //}
+=======
+                                <input type="hidden" name="action" value="student">
+                                <input type="hidden" name="page" value="registry">
+                            </form>';
+>>>>>>> 6801f796cc29c0f8c0f5d971e7b8724c91e0b0cb
+>>>>>>> Stashed changes
                     break;
                     case 'teacher':
                         echo '
