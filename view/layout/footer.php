@@ -1,7 +1,16 @@
 <!-- The popup window is from w3schools cause I'm not gonna bother with something this trivial, it is for the live chat -->
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
 <?php
     $page = "";
 
@@ -35,6 +44,11 @@
         }
     }
 ?>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -65,6 +79,10 @@ function closeForm() {
 <<<<<<< Updated upstream
 =======
 >>>>>>> 6801f796cc29c0f8c0f5d971e7b8724c91e0b0cb
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

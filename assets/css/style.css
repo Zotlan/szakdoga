@@ -1,0 +1,159 @@
+body {
+    background-color: #101013;
+    color: #daa520;
+  }
+a{
+ color: goldenrod;
+}
+ul{
+  list-style-type:none;
+}
+.btn{
+  border-color: black;
+  background-color: black;
+  color: goldenrod;
+}
+.btn:hover {
+  background-color: black;
+}
+.btn:active {
+  background-color: black;
+}
+.button-secondary:hover{
+  color: goldenrod;
+}
+.dropdown-menu{
+  background-color: black;
+}
+.dropdown-item{
+  color: goldenrod;
+}
+.dropdown-item:hover{
+  background-color: black;
+}
+.dropdown-divider{
+  border-color: goldenrod;
+}
+.nav-link{
+  color: goldenrod;
+}
+.navbar{
+  background-color: black;
+  border-bottom-style: solid;
+  border-color: goldenrod;
+}
+/*from w3schools, modified*/
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu main main main main main'
+    'menu footer footer footer footer footer';
+  gap: 10px;
+  padding: 10px;
+  grid-template-rows: 80% 20%;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+  font-size: 30px;
+}
+/*up to here*/
+
+.item1{
+  text-align: center;
+  grid-area: menu;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+.item2{
+  text-align: left;
+  grid-area: main;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+.item3{
+  text-align: left;
+  grid-area: footer;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+
+/*This is for the popup window from w3schools */
+* {box-sizing: border-box;}
+
+.open-button {
+  background-color: black;
+  color: goldenrod;
+  padding: 16px 20px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 16px;
+  width: 280px;
+}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  z-index: 9;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: black;
+}
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #101013;
+  resize: none;
+  min-height: 50px;
+}
+
+.form-container textarea:focus {
+  background-color: #1e1e21;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: white;
+  color: goldenrod;
+  padding: 16px 20px;
+  border: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .cancel {
+  background-color: red;
+  border: solid;
+  border-color: goldenrod;
+  border-width: 4px;
+  border-style: inset;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}

@@ -1,0 +1,54 @@
+body, html {
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display:table;
+}
+body {
+    background-color: #101013;
+    font-size: 25px;
+    color: #daa520;
+    text-align: center;
+    display:table-cell;
+    vertical-align:middle;
+}
+a{
+    color: goldenrod;
+}
+p{
+    vertical-align: middle;
+}
+img{
+    vertical-align: middle;
+}
+form{
+    display:table;
+    margin: auto;
+}
+form > input[type="text"], input[type="password"], input[type="submit"]{
+    border-color: goldenrod;
+}
+form > input[type="text"], input[type="password"]{
+    background-color: black;
+    color: goldenrod;
+}
+form > input[type="text"]:active, input[type="password"]:active {
+    background-color: black;
+    color: goldenrod;
+}
+form > input[type="submit"]{
+    color: goldenrod;
+    background-color: white;
+    border: 3px solid goldenrod;
+}
+.login_div{
+    border: 5px solid goldenrod;
+    margin: auto 39%;
+}
+.register_div{
+    background-color: white;
+    border: 5px solid goldenrod;
+    margin: auto 35%;
+}
