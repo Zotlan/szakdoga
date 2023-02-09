@@ -9,10 +9,14 @@ class User{
     private $user_Name;
     private $user_Password;
     private $user_Type;
+    private $usageEmail;
+    private $containsAt;
+    private $containsDot;
+    private $emailValid;
+    private $nickExists;
     private $validLength;
     private $containsNumber;
     private $containsUpper;
-    private $containsLetter;
     private $db;
 
     function __construct($db){
@@ -48,28 +52,24 @@ class User{
     //this function checks if the email address is valid so that it may be inserted into the database.
     public function checkEmail($Email){
 
-        $usageEmail = "";
-        $containsAt = "";
-        $containsDot = "";
-
         //checks if the email address is already registered
-        $sql="SELECT * FROM user WHERE 1";
+        $sql="SELECT * FROM user WHERE userEmail = '".$_POST['Email']."'";
         if($result = $this->db->dbselect($sql)){
             if($row = $result->fetch_assoc()){
                 if($row['userEmail'] == $Email){
-                    $usageEmail = 0;
+                    $this->usageEmail = 0;
                 }
                 else{
-                    $usageEmail = 1;
+                    $this->usageEmail = 1;
                 }
             }
         }//Checks if there is an "@" in the email address.
         if(strpos($Email, "@")){
-            $containsAt = 1;
+            $this->containsAt = 1;
         }
         //Checks if there is a "." in the email address.
         if(strpos($Email, ".")){
-            $containsDot = 1;
+            $this->containsDot = 1;
         }
 
         /*
@@ -80,38 +80,38 @@ class User{
         */
 
         //case 1
-        if($usageEmail != 1){
-            $emailValid = 0;
+        if($this->usageEmail != 1){
+            $this->emailValid = 0;
         }
 
         //case 2
-        if($containsAt == 0 || $containsDot == 0){
-            $emailValid = 1;
+        if($this->containsAt == 0 || $this->containsDot == 0){
+            $this->emailValid = 1;
         }
 
         //case 3
-        if($usageEmail == 1 && $containsAt == 1 && $containsDot == 1){
-            $emailValid = 2;
+        if($this->usageEmail == 1 && $this->containsAt == 1 && $this->containsDot == 1){
+            $this->emailValid = 2;
         }
-        return $emailValid;
+        return $this->emailValid;
     }
 
     //this function checks if the username is valid so that it may be inserted into the database.
     public function checkNick($Username){
-        $nickExists = "";
 
-        $sql="SELECT * FROM user WHERE 1";
+
+        $sql="SELECT * FROM user WHERE userName";
         if($result = $this->db->dbselect($sql)){
             if($row = $result->fetch_assoc()){
                 if($row['userName'] == $Username){
-                    $nickExists = 0;
+                    $this->nickExists = 0;
                 }
                 else{
-                    $nickExists = 1;
+                    $this->nickExists = 1;
                 }
             }
         }
-        return $nickExists;
+        return $this->nickExists;
     }
     
     //this function checks if the password is valid so that it may be inserted into the database.
@@ -154,7 +154,7 @@ class User{
         }
 
         //case 4
-        if($this->validLength == 1 && $this->containsNumber == 1 && $this->containsUpper == 1 && $this->containsLetter){
+        if($this->validLength == 1 && $this->containsNumber == 1 && $this->containsUpper == 1){
             $passwordValid = 3;
         }
         return $passwordValid;

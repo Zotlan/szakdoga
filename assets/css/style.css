@@ -10,19 +10,7 @@ ul{
 }
 .btn{
   border-color: black;
-<<<<<<< Updated upstream
-=======
   background-color: black;
-  color: goldenrod;
-}
-.btn:hover {
->>>>>>> Stashed changes
-  background-color: black;
-}
-.btn:active {
-  background-color: black;
-}
-.button-secondary:hover{
   color: goldenrod;
 }
 .btn:hover {
@@ -37,28 +25,16 @@ ul{
 .dropdown-menu{
   background-color: black;
 }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 .dropdown-item{
   color: goldenrod;
 }
-=======
->>>>>>> 6801f796cc29c0f8c0f5d971e7b8724c91e0b0cb
->>>>>>> Stashed changes
 .dropdown-item:hover{
   background-color: black;
 }
 .dropdown-divider{
   border-color: goldenrod;
 }
-<<<<<<< Updated upstream
-.flex-container {
-  display: flex;
-  flex-direction: row;
-=======
-<<<<<<< HEAD
-.navlink{
+.nav-link{
   color: goldenrod;
 }
 .navbar{
@@ -74,7 +50,7 @@ ul{
     'menu footer footer footer footer footer';
   gap: 10px;
   padding: 10px;
-  grid-template-rows: 700px 100px;
+  grid-template-rows: 80% 20%;
 }
 
 .grid-container > div {
@@ -87,6 +63,7 @@ ul{
   text-align: center;
   grid-area: menu;
   border: 1px solid goldenrod;
+  background-color: black;
 }
 .item2{
   text-align: left;
@@ -99,12 +76,6 @@ ul{
   grid-area: footer;
   border: 1px solid goldenrod;
   background-color: black;
-=======
-.flex-container {
-  display: flex;
-  flex-direction: row;
->>>>>>> 6801f796cc29c0f8c0f5d971e7b8724c91e0b0cb
->>>>>>> Stashed changes
 }
 
 /*This is for the popup window from w3schools */

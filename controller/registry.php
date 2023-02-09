@@ -46,7 +46,7 @@
                     echo "The Username is already in use" . "<br>";
                 }
 
-                if($password != 4){
+                if($password != 3){
                     echo $passwordReaction[$password] . "<br>";
                 }
 
