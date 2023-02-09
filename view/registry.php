@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <link rel="stylesheet" href="style.css">
         <style>
             body{
@@ -42,6 +43,53 @@
     </head>
     <body>
 
+=======
+<<<<<<< HEAD
+        <link rel="stylesheet" href="assets/css/login_style.css">
+    </head>
+    <body>
+
+=======
+<<<<<<< Updated upstream
+        <link rel="stylesheet" href="style.css">
+        <style>
+            body{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <?php
+            $action = $_REQUEST['action'] ?? "";
+                switch ($action){
+                    case 'student':
+                        echo '
+                            <form action="index.php" method="post">
+                                Email: <br>
+                                <input type="text" name="email" placeholder="Please Enter Your Email Address" required><br>
+                                Username: <br>
+                                <input type="text" name="username" placeholder="Please Enter Your Username" required><br>
+                                Password: <br>
+                                <input type="password" name="password" placeholder="Please Enter Your Password" required><br>
+                                <input type="submit">
+<<<<<<< Updated upstream
+                                <input type="hidden" name="action" value="student">
+                                <input type="hidden" name="page" value="registry">
+                            </form>';
+=======
+<<<<<<< HEAD
+                                <input type="hidden" name="action" value="student">';
+                            //if (){
+                                echo '<input type="hidden" name="page" value="registry">
+
+=======
+<<<<<<< HEAD
+        <link rel="stylesheet" href="assets/css/login_style.css">
+    </head>
+    <body>
+
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                 <?php
                 $action = $_REQUEST['action'] ?? "";
                 switch ($action){
@@ -58,7 +106,15 @@
                                         <input type="password" name="password" placeholder="Please Enter Your Password" required><br>
                                         <input type="submit">
                                         <input type="hidden" name="action" value="student">';
+<<<<<<< Updated upstream
                                         //if (){
+=======
+<<<<<<< HEAD
+                                        if (isset($_SESSION['username'])){
+=======
+                                        //if (){
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                                         echo '<input type="hidden" name="page" value="registry">
                         
                                     </form>
@@ -66,7 +122,18 @@
                                 </div>
                             </div>
                         ';
+<<<<<<< Updated upstream
                         //}
+=======
+<<<<<<< HEAD
+                                        }
+                                        else{
+                                            
+                                        }
+=======
+                        //}
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                     break;
                     case 'teacher':
                         echo '
@@ -85,6 +152,11 @@
                     break;
                 }
                 ?>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 =======
         <link rel="stylesheet" href="style.css">
         <style>
@@ -148,6 +220,10 @@
 <<<<<<< Updated upstream
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
     </body>
 </html>

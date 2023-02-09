@@ -44,6 +44,13 @@ form > input[type="submit"]{
     border: 3px solid goldenrod;
 }
 .login_div{
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    background-color: white;
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
     border: 5px solid goldenrod;
     margin: auto 39%;
 }
@@ -51,4 +58,12 @@ form > input[type="submit"]{
     background-color: white;
     border: 5px solid goldenrod;
     margin: auto 35%;
+<<<<<<< Updated upstream
 }
+=======
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes

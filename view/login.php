@@ -5,8 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
         <link rel="stylesheet" href="assets/css/login_style.css">
     </head>
     <body>
@@ -25,6 +34,11 @@
                 <a href="index.php"><img src="assets/icons/home.png" width="25px" height="25px"></a>
             </div>
         </div>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         <link rel="stylesheet" href="style.css">
@@ -49,6 +63,10 @@
 <<<<<<< Updated upstream
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
     </body>
 </html>

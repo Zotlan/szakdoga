@@ -3,7 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< Updated upstream
 -- Generation Time: Feb 02, 2023 at 10:29 AM
+=======
+<<<<<<< HEAD
+-- Generation Time: Feb 09, 2023 at 08:09 AM
+=======
+-- Generation Time: Feb 02, 2023 at 10:29 AM
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -275,7 +283,15 @@ ALTER TABLE `reaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
+<<<<<<< Updated upstream
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+=======
+<<<<<<< HEAD
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+=======
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
 
 --
 -- Constraints for dumped tables

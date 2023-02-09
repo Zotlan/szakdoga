@@ -12,6 +12,13 @@
 
 =======
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        <link rel="stylesheet" href="assets/css/style.css">
+
+=======
+>>>>>>> Stashed changes
         <link rel="stylesheet" href="style.css">
 
 <<<<<<< Updated upstream
@@ -21,10 +28,19 @@
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
         <nav class="navbar navbar-expand-lg navbar-dark">
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -44,6 +60,10 @@
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                     <a class="navbar-brand" href="index.php" style="color: goldenrod;"><img src="assets/icons/home.png" width="50" height="50"></a>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -61,6 +81,12 @@
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                                        echo '<a class="nav-link" href="index.php?page=chat"><img src="assets/icons/chat.png" width="50" height="50"></a>';
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
                                         echo '<a class="nav-link" href="index.php?page=chat" style="color: goldenrod;"><img src="assets/icons/chat.png" width="50" height="50"></a>';
 =======
 <<<<<<< HEAD
@@ -72,6 +98,10 @@
 <<<<<<< Updated upstream
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
                                     }
                                 }
@@ -89,6 +119,12 @@
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                                                <a class="nav-link" href="index.php?page=forum"><img src="assets/icons/forum.png" width="50" height="50"></a>
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
                                                 <a class="nav-link" href="index.php?page=forum" style="color: goldenrod;"><img src="assets/icons/forum.png" width="50" height="50"></a>
 =======
 <<<<<<< HEAD
@@ -101,11 +137,20 @@
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                                             </li>';
                                 }
                             }
                         ?>
                         </li>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
@@ -117,6 +162,10 @@
 =======
 <<<<<<< HEAD
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
                         <li>
                             <?php
@@ -136,6 +185,11 @@
 <<<<<<< HEAD
 =======
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                     </ul>
@@ -150,10 +204,19 @@
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                         <li>
                             <?php
                             if(isset($_SESSION['id'])){
                                 echo'
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
@@ -166,15 +229,32 @@
 <<<<<<< HEAD
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                                     <div class="btn-group dropdown">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img src="assets/icons/user.png" width="50" height="50">
                                         </button>
+<<<<<<< Updated upstream
                                         <div class="dropdown-menu">
+=======
+<<<<<<< HEAD
+                                        <div class="dropdown-menu dropdown-menu-end">
+=======
+                                        <div class="dropdown-menu">
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                                             <a class="nav-link" href="index.php?page=profile"><img src="assets/icons/profile.png" width="50" height="50"> Profile</a>
                                             
                                             <div class="dropdown-divider"></div>
                                             <a class="nav-link" href="index.php?page=login&action=logout"><img src="assets/icons/logout.png" width="50" height="50"> Logout</a>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -201,11 +281,21 @@
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
+>>>>>>> Stashed changes
                                         </div>
                                     </div>';
                             }
                             else{
                                 echo'
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                                <a class="nav-link" href="index.php?page=login&action=login"><img src="assets/icons/login.png" width="50" height="50"> Login/Registartion</a>
+=======
+>>>>>>> Stashed changes
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -224,6 +314,10 @@
 <<<<<<< Updated upstream
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
                                 ';
                             }
@@ -237,6 +331,12 @@
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
                 </div>
 =======
 <<<<<<< HEAD
@@ -248,6 +348,10 @@
 <<<<<<< Updated upstream
 =======
 >>>>>>> c762d8e3d497baef9fa1bac296c05f2b4e863c51
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9422ec84c1c1a25915d21fb56829e930e763ddc4
 >>>>>>> Stashed changes
             </div>
 </nav>
