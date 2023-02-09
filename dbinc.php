@@ -1,9 +1,9 @@
 <?php
 Class DataBase{
     private $servername = "localhost";
-    private $username = "Zotlan";
-    private $password = "Password";
-    private $dbname = "forum";
+    private $username = "c31bzolidbu";
+    private $password = "imkPF@58";
+    private $dbname = "c31bzolidb";
 
     private $conn;
 

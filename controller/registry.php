@@ -26,7 +26,6 @@
         "The password must be at least 8 characters long",//0
         "The password must contain at least one number",//1
         "The password must contain at least one uppercase letter",//2
-        "The password must contain at least one letter",//3
     );
 
     switch ($action){
@@ -51,7 +50,7 @@
                     echo $passwordReaction[$password] . "<br>";
                 }
 
-                if($email == 2 && $nickname == 1 && $password == 4){
+                if($email == 2 && $nickname == 1 && $password == 3){
                     $registry = 1;
                 }
             }

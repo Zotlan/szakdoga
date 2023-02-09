@@ -9,7 +9,10 @@ class User{
     private $user_Name;
     private $user_Password;
     private $user_Type;
-
+    private $validLength;
+    private $containsNumber;
+    private $containsUpper;
+    private $containsLetter;
     private $db;
 
     function __construct($db){
@@ -114,21 +117,16 @@ class User{
     //this function checks if the password is valid so that it may be inserted into the database.
     public function checkPassword($Password){
 
-        $containsNumber = 0;
-
         if(strlen($Password) >= 8){
-            $validLength = 1;
+            $this->validLength = 1;
             for ($i = 0; $i <= strlen($Password)-1; $i++) {
                 if(is_numeric($Password[$i]))  {
-                    $containsNumber = 1;
+                    $this->containsNumber = 1;
                     break;
                 }
             }
             if(preg_match('/[A-Z]/', $Password)){
-                    $containsUpper = 1;
-            }
-            if(preg_match("/[a-z]/", $Password)){
-                $containsLetter = 1;
+                    $this->containsUpper = 1;
             }
         }
         /*
@@ -141,28 +139,23 @@ class User{
         */
 
         //case 1
-        if($validLength != 1){
+        if($this->validLength != 1){
             $passwordValid = 0;
         }
 
         //case 2
-        if($containsNumber != 1){
+        if($this->containsNumber != 1){
             $passwordValid = 1;
         }
 
         //case 3
-        if($containsUpper != 1){
+        if($this->containsUpper != 1){
             $passwordValid = 2;
         }
 
         //case 4
-        if($containsLetter != 1){
+        if($this->validLength == 1 && $this->containsNumber == 1 && $this->containsUpper == 1 && $this->containsLetter){
             $passwordValid = 3;
-        }
-
-        //case 5
-        if($validLength == 1 && $containsNumber == 1 && $containsUpper == 1 && $containsLetter){
-            $passwordValid = 4;
         }
         return $passwordValid;
     }
