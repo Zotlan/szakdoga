@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 22, 2023 at 10:31 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost
+-- Generation Time: Feb 12, 2023 at 04:49 PM
+-- Server version: 10.3.36-MariaDB-0+deb10u2
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `forum`
+-- Database: `c31bzolidb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_name` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `user_type` int(11) NOT NULL
+CREATE TABLE `category` (
+  `cat_id` int(11) NOT NULL,
+  `cat_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `user_type`) VALUES
-(1, 'Zotlan', 'Password', 3);
 
 -- --------------------------------------------------------
 
@@ -50,9 +41,7 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `user_type`) VALUES
 CREATE TABLE `chat` (
   `chat_id` int(11) NOT NULL,
   `participant_1` int(11) NOT NULL,
-  `participant_2` int(11) NOT NULL,
-  `p_1_message_id` int(11) NOT NULL,
-  `p_2_message_id` int(11) NOT NULL
+  `participant_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -63,10 +52,8 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
-  `comment_content` varchar(1000) NOT NULL,
-  `comment_likes` int(11) DEFAULT NULL,
-  `comment_dislikes` int(11) DEFAULT NULL,
-  `further_comment_id` int(11) DEFAULT NULL
+  `post_id` int(11) NOT NULL,
+  `comment_content` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -77,9 +64,8 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `further_comments` (
   `f_comment_id` int(11) NOT NULL,
-  `f_comment_content` varchar(100) NOT NULL,
-  `f_comment_likes` int(11) DEFAULT NULL,
-  `f_comment_dislikes` int(11) DEFAULT NULL
+  `comment_id` int(11) NOT NULL,
+  `f_comment_content` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -90,7 +76,9 @@ CREATE TABLE `further_comments` (
 
 CREATE TABLE `messages` (
   `message_id` int(11) NOT NULL,
-  `message_content` varchar(1000) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `message_content` varchar(1000) NOT NULL,
+  `message_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,9 +93,23 @@ CREATE TABLE `post` (
   `post_title` varchar(255) NOT NULL,
   `post_content` varchar(1000) NOT NULL,
   `post_image_path` varchar(100) DEFAULT NULL,
-  `post_likes` int(11) DEFAULT NULL,
-  `post_dislikes` int(11) DEFAULT NULL,
-  `comment_id` int(11) NOT NULL
+  `cat_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reaction`
+--
+
+CREATE TABLE `reaction` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `comments_id` int(11) DEFAULT NULL,
+  `f_comments_id` int(11) DEFAULT NULL,
+  `liked` tinyint(1) NOT NULL,
+  `disliked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -117,19 +119,22 @@ CREATE TABLE `post` (
 --
 
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `user_type` int(11) NOT NULL
+  `userID` int(11) NOT NULL,
+  `userEmail` varchar(100) NOT NULL,
+  `userName` varchar(100) NOT NULL,
+  `userPassword` varchar(100) NOT NULL,
+  `userType` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `email`, `username`, `password`, `user_type`) VALUES
-(1, 'test@email.com', 'tester', 'testpass', 1);
+INSERT INTO `user` (`userID`, `userEmail`, `userName`, `userPassword`, `userType`) VALUES
+(10, 'example@email.com', 'tester', '179ad45c6ce2cb97cf1029e212046e81', 1),
+(26, 'hosszufasz69@kuki.hu', 'HeilHilter', '6652f1488aff7d45ce587ebf5d2c0efb', 1),
+(30, 'Szar@Selectusers.net', 'DrSenkihazi', '5fd913ce9a195ccd408ef63c7752db09', 1),
+(33, 'bazsizolika@gmail.com', 'Zotlan', '391095d7004733654636ffe5d68053f8', 1);
 
 -- --------------------------------------------------------
 
@@ -156,12 +161,11 @@ INSERT INTO `user_type` (`type_id`, `type_name`) VALUES
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `category`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`),
-  ADD UNIQUE KEY `name_user` (`admin_name`),
-  ADD KEY `user_type` (`user_type`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`cat_id`),
+  ADD UNIQUE KEY `cat_name` (`cat_name`);
 
 --
 -- Indexes for table `chat`
@@ -169,28 +173,28 @@ ALTER TABLE `admin`
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`chat_id`),
   ADD KEY `participant_1` (`participant_1`),
-  ADD KEY `participant_2` (`participant_2`),
-  ADD KEY `p_1_message_id` (`p_1_message_id`),
-  ADD KEY `p_2_message_id` (`p_2_message_id`);
+  ADD KEY `participant_2` (`participant_2`);
 
 --
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `further_comment_id` (`further_comment_id`);
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `further_comments`
 --
 ALTER TABLE `further_comments`
-  ADD PRIMARY KEY (`f_comment_id`);
+  ADD PRIMARY KEY (`f_comment_id`),
+  ADD KEY `comment_id` (`comment_id`);
 
 --
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
-  ADD PRIMARY KEY (`message_id`);
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `post`
@@ -198,16 +202,24 @@ ALTER TABLE `messages`
 ALTER TABLE `post`
   ADD PRIMARY KEY (`post_id`),
   ADD KEY `poster_id` (`poster_id`),
-  ADD KEY `comment_id` (`comment_id`);
+  ADD KEY `category_id` (`cat_id`);
+
+--
+-- Indexes for table `reaction`
+--
+ALTER TABLE `reaction`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`,`post_id`,`comments_id`,`f_comments_id`),
+  ADD KEY `f_comments_id` (`f_comments_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `comments_id` (`comments_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `name_user` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `user_type` (`user_type`);
+  ADD PRIMARY KEY (`userID`),
+  ADD KEY `user_type` (`userType`);
 
 --
 -- Indexes for table `user_type`
@@ -220,10 +232,10 @@ ALTER TABLE `user_type`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `category`
 --
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `category`
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -256,48 +268,67 @@ ALTER TABLE `post`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `reaction`
+--
+ALTER TABLE `reaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`type_id`);
-
---
 -- Constraints for table `chat`
 --
 ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`participant_1`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`participant_2`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `chat_ibfk_3` FOREIGN KEY (`p_1_message_id`) REFERENCES `messages` (`message_id`),
-  ADD CONSTRAINT `chat_ibfk_4` FOREIGN KEY (`p_2_message_id`) REFERENCES `messages` (`message_id`);
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`participant_1`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`participant_2`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`further_comment_id`) REFERENCES `further_comments` (`f_comment_id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+
+--
+-- Constraints for table `further_comments`
+--
+ALTER TABLE `further_comments`
+  ADD CONSTRAINT `further_comments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`comment_id`);
+
+--
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`comment_id`);
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`);
+
+--
+-- Constraints for table `reaction`
+--
+ALTER TABLE `reaction`
+  ADD CONSTRAINT `reaction_ibfk_1` FOREIGN KEY (`f_comments_id`) REFERENCES `further_comments` (`f_comment_id`),
+  ADD CONSTRAINT `reaction_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
+  ADD CONSTRAINT `reaction_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `reaction_ibfk_4` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`comment_id`);
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`type_id`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`userType`) REFERENCES `user_type` (`type_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
