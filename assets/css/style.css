@@ -42,41 +42,6 @@ ul{
   border-bottom-style: solid;
   border-color: goldenrod;
 }
-/*from w3schools, modified*/
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'menu main main main main main'
-    'menu footer footer footer footer footer';
-  gap: 10px;
-  padding: 10px;
-  grid-template-rows: 80% 20%;
-}
-
-.grid-container > div {
-  padding: 20px 0;
-  font-size: 30px;
-}
-/*up to here*/
-
-.item1{
-  text-align: center;
-  grid-area: menu;
-  border: 1px solid goldenrod;
-  background-color: black;
-}
-.item2{
-  text-align: left;
-  grid-area: main;
-  border: 1px solid goldenrod;
-  background-color: black;
-}
-.item3{
-  text-align: left;
-  grid-area: footer;
-  border: 1px solid goldenrod;
-  background-color: black;
-}
 
 /*This is for the popup window from w3schools */
 * {box-sizing: border-box;}

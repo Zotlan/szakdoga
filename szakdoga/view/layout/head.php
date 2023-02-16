@@ -57,15 +57,14 @@
                             }
                             ?>
                         </li>
-                    </ul>
+                        <li>
                             <?php
                             if(isset($_SESSION['id'])){
                                 echo'
-                                    <div class="btn-group dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="btn-group dropdown">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="assets/icons/user.png" width="50" height="50">
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <img src="assets/icons/user.png" width="50" height="50"></button>
+                                        <div class="dropdown-menu dropdown-menu-end">
                                             <a class="nav-link" href="index.php?page=profile"><img src="assets/icons/profile.png" width="50" height="50"> Profile</a>
                                             <a class="nav-link" href="index.php?page=mailbox"><img src="assets/icons/mailbox.png" width="50" height="50">Notifications</a>
                                             <div class="dropdown-divider"></div>
@@ -79,7 +78,8 @@
                                 ';
                             }
                             ?>
-
+                        </li>
+                    </ul>
 
             </div>
 </nav>

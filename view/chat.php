@@ -3,11 +3,15 @@ include "layout/head.php";
 ?>
 
 <div class="grid-container">
-    <div class="item1"> <!--List of chatrooms-->
+    <div class="roomlist"> <!--List of chatrooms-->
+        <div class="chatroom">
+            
+        </div>
+        <br>
         <?php
-            for($i=0; $i<10; $i++){
+            for($i=0; $i<9; $i++){
                 echo'
-                <div>
+                <div class="chatroom">
                     
                 </div>
                 <br>
@@ -15,10 +19,10 @@ include "layout/head.php";
             }
         ?>
     </div>
-    <div class="item2">
+    <div class="roomview">
 
     </div>
-    <div class="item3">
+    <div class="toolbar">
 
     </div>
 </div>

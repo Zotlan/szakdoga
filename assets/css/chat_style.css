@@ -1,0 +1,42 @@
+/*from w3schools, modified*/
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu main main main main main'
+    'menu footer footer footer footer footer';
+  gap: 10px;
+  padding: 10px;
+  grid-template-rows: 85% 15%;
+}
+.grid-container > div {
+  padding: 20px 0;
+  font-size: 30px;
+}
+.roomlist{
+  text-align: center;
+  grid-area: menu;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+.roomview{
+  text-align: left;
+  grid-area: main;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+.toolbar{
+  text-align: left;
+  grid-area: footer;
+  border: 1px solid goldenrod;
+  background-color: black;
+}
+.chatroom{
+  max-width: 90%;
+  max-height: 10%;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid darkgoldenrod;
+  background-color: white;
+}
+/*up to here*/
