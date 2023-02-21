@@ -27,11 +27,9 @@
             $login = $user->checkLogin($_POST['username'], $_POST['password']);
 
             $loginResult = $loginReaction[$login];
+
+            echo $loginResult . "<br>";
             }
         break;
     }
-    echo $loginResult . "<br>";
-    //print_r($_SESSION);
-
-
     require 'view/login.php';

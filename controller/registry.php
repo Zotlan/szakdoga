@@ -29,12 +29,4 @@
         $user->registerStudent($_POST['email'], $_POST['username'], $_POST['password']);
         echo "Registration Successful." . "<br>";
     }
-    else{
-        //echo "email: ".$email."<br>";
-        //echo "nickname: ".$nickname."<br>";
-        //echo "password: ".$password."<br>";
-    }
-
-
-
     require "view/registry.php";
