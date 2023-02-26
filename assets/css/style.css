@@ -10,15 +10,15 @@ ul{
   list-style-type:none;
 }
 .btn{
-  border-color: black;
-  background-color: black;
+  border-color: transparent;
+  background-color: transparent;
   color: goldenrod;
 }
 .btn:hover {
-  background-color: black;
+  background-color: transparent;
 }
 .btn:active {
-  background-color: black;
+  background-color: transparent;
 }
 .button-secondary:hover{
   color: goldenrod;
@@ -42,4 +42,36 @@ ul{
   background-color: black;
   border-bottom-style: solid;
   border-color: goldenrod;
+  height: 12vh;
+}
+.ppic{
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+.scroller {
+  overflow-y: scroll;
+  scrollbar-color: black grey;
+  scrollbar-width: thin;
 }
