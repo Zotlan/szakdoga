@@ -9,8 +9,10 @@
         <?php
         $page = "";
         $page = $_REQUEST['page'] ?? "";
-        if($page == "chat"){
-            echo '<link rel="stylesheet" href="assets/css/chat_style.css">';
+        switch ($page){
+            case "chat":
+                echo '<link rel="stylesheet" href="assets/css/chat_style.css">';
+                break;
         }
         ?>
 </head>

@@ -10,9 +10,18 @@ class Chatroom{
         $this->db=$db;
     }
 
-    public function createRoom(){
+    public function createRoom(){}
 
+    public function sendMessage(){}
+
+    public function checkPublicRooms(){
+        $numberOfRooms = "";
+        $sql = "SELECT * FROM chat WHERE publicity = 1";
+        if($result = $this->db->dbselect($sql)) {
+            while($row = $result->fetch_assoc()){
+                $numberOfRooms++;
+            }
+        }
+        return $numberOfRooms;
     }
-
-
 }

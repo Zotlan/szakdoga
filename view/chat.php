@@ -4,16 +4,17 @@ include "layout/head.php";
 <!-- This UI is based on a template at https://blog.stackfindover.com/chat-box-design-html-css/ made by Thomas d’Aubenton, but I have excessively modified it, css included.-->
     <div class="uiv">
         <div class="uv">
-            <section class="chatrooms scroller">
+            <section class="chatrooms chat_scroller">
                 <?php
-                for($i=0; $i<100; $i++){
+
+                $NoR = $rooms;//the number of public rooms in the database
+
+                for($i=0; $i<$NoR; $i++){
                     echo '
                     <div class="chatroom">
                         <img class="photo" src="" alt="">
-                        <div class="desc-contact" >
-                            <p class="room_name">Name of chatroom</p >
-                        </div>
-                        <div class="notify">appears if there is an unread message</div >
+                        <div class="room_name">'." ".'</div>
+                        <!--<div class="notify"></div >-->
                     </div >';
                 }
                 ?>
@@ -25,7 +26,7 @@ include "layout/head.php";
                         echo
                         '<div class="message">
                             <img class="photo" src="" alt="">
-                            <p class="message_text">Example message</p>
+                            <div class="message_text">Example message</div>
                         </div>';
                     }
                     ?>
