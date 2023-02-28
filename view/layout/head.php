@@ -27,7 +27,7 @@
                     if($page != "chat"){
                         echo '
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?page=chat"><img src="assets/icons/chat.png" width="50" height="50"></a>
+                                <a class="nav-link" href="index.php?page=chat&currentRoom=1"><img src="assets/icons/chat.png" width="50" height="50"></a>
                             </li>';
                     }
                 }

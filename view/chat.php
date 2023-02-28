@@ -6,37 +6,48 @@ include "layout/head.php";
         <div class="uv">
             <section class="chatrooms chat_scroller">
                 <?php
-
-                $NoR = $rooms;//the number of public rooms in the database
-
-
-
-                for($i=0; $i<$NoR; $i++){
-                    $chatName = $chat->checkRoomNames($i+1);
+                for($i=0; $i<$rooms; $i++){
+                    $chatName = $chat->checkRoomNames($roomIDs[$i]);
                     echo '
+                    <a href="index.php?page=chat&currentRoom='.($roomIDs[$i]).'">
                     <div class="chatroom">
                         <div class="room_name">'.($chatName).'</div>
                         <!--<div class="notify"></div >-->
-                    </div >';
+                    </div >
+                    </a>';
                 }
                 ?>
             </section>
             <section class="chat">
                 <div class="room_view chat_scroller">
                     <?php
-                    for($i=0; $i<100; $i++){
-                        echo
-                        '<div class="message">
-                            <img class="photo" src="" alt="">
-                            <div class="message_text">Example message</div>
-                        </div>';
+                    for($i=0; $i<$roomMessages; $i++){
+                            $userName = $chat->checkMessageSender($messageIDs[$i]);
+                            $text = $chat->checkMessageText($messageIDs[$i], $_REQUEST['currentRoom']);
+                            echo
+                                '<div class="message">
+                                    <img class="photo" src="assets/profile_pictures/' . ($userName) . '.jpg" alt="">
+                                    <div class="message_text">' . ($text) . '</div>
+                                </div>';
                     }
                     ?>
                 </div>
-                <div class="footer-chat">
-                    <input type="text" class="message_field" placeholder="Type your message here">
-                    <a class="send_button" href=""><img src="assets/icons/send.png"></a>
-                </div>
+                <?php
+                //$rand=rand();
+                //$_SESSION['rand']=$rand;
+                echo '
+                <form class="footer-chat" action="index.php" method="post">
+                    <input type="text" class="message_field" name="message_field" placeholder="Type your message here" required>
+                    <input class="send_button" type="submit" name="send_message" value="submit">
+                    <input type="hidden" name="action" value="send">
+                    <input type="hidden" name="page" value="chat">
+                    <input type="hidden" name="currentRoom" value="'.$_REQUEST['currentRoom'].'">
+                </form>';
+                //if(isset($_POST['submitbtn']) && $_POST['randcheck']==$_SESSION['rand'])
+                //{
+                    // Your code here
+                //}
+                ?>
             </section>
         </div>
     </div>
