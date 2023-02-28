@@ -24,4 +24,14 @@ class Chatroom{
         }
         return $numberOfRooms;
     }
+    public function checkRoomNames($roomNumber){
+        $chatName = "";
+        $sql = "SELECT chat_name FROM chat WHERE chat_id = '".($roomNumber)."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $chatName = $row["chat_name"];
+            }
+        }
+        return $chatName;
+    }
 }

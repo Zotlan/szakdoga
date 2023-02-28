@@ -9,11 +9,13 @@ include "layout/head.php";
 
                 $NoR = $rooms;//the number of public rooms in the database
 
+
+
                 for($i=0; $i<$NoR; $i++){
+                    $chatName = $chat->checkRoomNames($i+1);
                     echo '
                     <div class="chatroom">
-                        <img class="photo" src="" alt="">
-                        <div class="room_name">'." ".'</div>
+                        <div class="room_name">'.($chatName).'</div>
                         <!--<div class="notify"></div >-->
                     </div >';
                 }

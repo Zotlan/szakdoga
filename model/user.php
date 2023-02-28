@@ -108,7 +108,6 @@ class User{
                     }
                     else{
                         echo "The password must contain at least one uppercase letter";
-
                     }
                 }
                 else{
