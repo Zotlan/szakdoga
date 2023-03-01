@@ -36,7 +36,7 @@ include "layout/head.php";
                 //$rand=rand();
                 //$_SESSION['rand']=$rand;
                 echo '
-                <form class="footer-chat" action="index.php" method="post">
+                <form class="footer-chat" action="" method="post">
                     <input type="text" class="message_field" name="message_field" placeholder="Type your message here" required>
                     <input class="send_button" type="submit" name="send_message" value="submit">
                     <input type="hidden" name="action" value="send">

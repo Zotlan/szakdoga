@@ -63,7 +63,7 @@ class Chatroom{
     }
     public function checkMessageIDs($roomNumber){
         $i = 0;
-        $ID = "";
+        $ID[$i] = "";
         $sql = "SELECT * FROM messages WHERE chat_id = '".$roomNumber."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
