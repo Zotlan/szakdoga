@@ -123,7 +123,7 @@ class User{
 
     //this function inserts the userdata
     public function registerStudent($Email, $Name, $Password){
-        $sql = "INSERT INTO user (userID, userEmail, userName, userPassword, userType) VALUES (NULL,'$Email','$Name','".md5($Password)."',1)";
+        $sql = "INSERT INTO user (userID, userEmail, userName, userPassword, userType) VALUES (NULL,'".md5($Email)."','$Name','".md5($Password)."',1)";
         $result = $this->db->dbinsert($sql);
     }
 }

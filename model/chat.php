@@ -42,7 +42,6 @@ class Chatroom{
     }
     public function checkRoomMessageNumber($roomNumber){
         $roomMessages = "";
-        $allMessages = "";
         $sql = "SELECT * FROM messages WHERE chat_id = '".$roomNumber."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
@@ -100,7 +99,10 @@ class Chatroom{
         }
         return $username;
     }
-    public function createRoom(){}
+    public function createRoom($chatName){
+        $sql = "INSERT INTO chat (chat_id, chat_name, publicity, owner_id) VALUES (NULL,'".$chatName."',2,'".$_SESSION["id"]."')";
+        $result = $this->db->dbinsert($sql);
+    }
 
     public function sendMessage($message, $currentRoom){
         $sql = "INSERT INTO messages (message_id, user_id, message_content, message_timestamp, chat_id) VALUES (NULL,'".$_SESSION["id"]."','".$message."',NULL,'".$currentRoom."')";

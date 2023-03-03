@@ -17,6 +17,38 @@ include "layout/head.php";
                     </a>';
                 }
                 ?>
+                <div class="footer-rooms">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creatRoomModal">
+                        Create Room
+                    </button>
+                    <div class="modal" id="creatRoomModal">
+                        <div class="room_creator modal-dialog">
+                            <div class="room_creator modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Create Your Own Private Room!</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form action="">
+                                        <label for="roomName">Room name:</label><br>
+                                        <input type="text" id="roomName">
+                                        <input type="submit">
+                                    </form>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section class="chat">
                 <div class="room_view chat_scroller">
@@ -38,7 +70,8 @@ include "layout/head.php";
                 echo '
                 <form class="footer-chat" action="" method="post">
                     <input type="text" class="message_field" name="message_field" placeholder="Type your message here" required>
-                    <input class="send_button" type="submit" name="send_message" value="submit">
+                    <!-- <input class="send_button" type="submit" name="send_message" value="submit"> -->
+                    <button class="send_button" type="submit" name="send_message" value="submit"><img src="assets/icons/send.png"></button>
                     <input type="hidden" name="action" value="send">
                     <input type="hidden" name="page" value="chat">
                     <input type="hidden" name="currentRoom" value="'.$_REQUEST['currentRoom'].'">

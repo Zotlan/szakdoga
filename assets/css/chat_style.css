@@ -12,32 +12,33 @@ body {
 }
 /* === CONVERSATIONS === */
 .chatrooms {
-  width: 35%;
-  height: 88vh;
-  overflow: hidden;
+  width: 20%;
+  height: 80vh;
+  overflow: auto;
   border-right: 2px solid goldenrod;
   display: inline-block;
 }
 .chatroom {
   width: 100%;
   height: 60px;
-  background-color: white;
+  background-color: transparent;
   display:flex;
   align-items: center;
   cursor: pointer;
 }
 
 .room_view{
-  max-height: 76vh;
-  background-color: black;
+  height: 76vh;
+  background-color: transparent;
   overflow: auto;
 }
 
 .chatroom-active {
   width: 98.5%;
-  height: 90px;
-  background-color: #FFF;
-  border-bottom: solid 1px #E0E0E0;
+  height: 60px;
+  background-color: #1A1925;
+  border-bottom: solid 1px goldenrod;
+  border-top: solid 1px goldenrod;
 }
 
 .photo {
@@ -75,22 +76,43 @@ body {
 }
 
 .footer-chat {
-  width: 65%;
+  width: 80%;
   height: 12%;
   display:flex;
   align-items: center;
   position:absolute;
   bottom: 0;
-  background-color: #101013;
+  background-color: white;
   border-top: 2px solid goldenrod;
 }
 
+.footer-rooms{
+  width: 20%;
+  height: 8vh;
+  display:flex;
+  align-items: center;
+  position:absolute;
+  bottom: 0;
+  background-color: black;
+  border-top: 2px solid goldenrod;
+  border-right: 2px solid goldenrod;
+}
+
 .send_button {
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 1%;
   vertical-align: center;
   width: 50px;
   height: 50px;
+  background-color: transparent;
+  border-color: transparent;
+}
+.send_button > img{
+  width: 50px;
+  height: 50px;
+  vertical-align: center;
 }
 
 .message_field {
@@ -99,17 +121,12 @@ body {
   height: 50px;
   margin-left: 3%;
   padding: 10px;
+  background-color: black;
+  color: goldenrod;
 }
 
-.notify{
-  display: flex;
-  justify-content: right;
-  right: 0;
-  padding: 3px 8px;
-  color: #BBB;
-  background-color: #FFF;
-  border: 1px solid #E5E5E5;
-  border-radius: 15px;
+.room_creator{
+  background: #101013;
 }
 
 /* width */
@@ -133,7 +150,7 @@ body {
 }
 
 .chat_scroller {
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-color: goldenrod ghostwhite;
   scrollbar-width: thin;
 }
