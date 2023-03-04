@@ -27,6 +27,11 @@
     }
     if($email == 1 && $nickname == 1 && $password == 1){
         $user->registerStudent($_POST['email'], $_POST['username'], $_POST['password']);
-        echo "Registration Successful." . "<br>";
+        $user->checkLogin($_POST['username'], $_POST['password']);
+        header("Location: index.php?page=forum");
+        exit();
     }
+
+
+
     require "view/registry.php";

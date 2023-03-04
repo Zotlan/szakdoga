@@ -6,63 +6,105 @@ include "layout/head.php";
         <div class="uv">
             <section class="chatrooms chat_scroller">
                 <?php
-                for($i=0; $i<$rooms; $i++){
+                for($i=0; $i<$publicRooms; $i++){
                     $chatName = $chat->checkRoomNames($roomIDs[$i]);
+                    if ($roomIDs[$i] == $currentRoom){
+                        $class = "chatroom-active";
+                    }
+                    else{
+                        $class = "chatroom";
+                    }
                     echo '
                     <a href="index.php?page=chat&currentRoom='.($roomIDs[$i]).'">
-                    <div class="chatroom">
+                    <div class="'.$class.'">
                         <div class="room_name">'.($chatName).'</div>
                         <!--<div class="notify"></div >-->
                     </div >
                     </a>';
                 }
                 ?>
-                <div class="footer-rooms">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creatRoomModal">
-                        Create Room
-                    </button>
-                    <div class="modal" id="creatRoomModal">
-                        <div class="room_creator modal-dialog">
-                            <div class="room_creator modal-content">
 
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Create Your Own Private Room!</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="footer-rooms" >
+                        <?php
+                            if($ownedRoom == 0) {
+                            echo'
+                            <button type = "button" class="createRoomButton" data-toggle = "modal" data-target = "#creatRoomModal" >
+                                Create Room
+                            </button >
+                            <div class="modal" id = "creatRoomModal" >
+                            <div class="room_creator modal-dialog" >
+                                <div class="room_creator modal-content" >
+
+                                    <div class="modal-header" >
+                                        <h4 class="modal-title" > Create Your Own private Room!</h4 >
+                                        <button type = "button" class="close" data-dismiss = "modal" >&times;</button >
+                                    </div >
+
+                                    <div class="modal-body" >
+                                        <form action = "" method="post">
+                                            <label for="roomName" > Room name:</label ><br >
+                                            <input type = "text" id = "roomName" name="roomName">
+                                            <input type = "submit" name = "create" >
+                                        </form >
+                                    </div >
+
+                                    <div class="modal-footer" >
+                                        <button type = "button" class="btn btn-danger" data-dismiss = "modal" > Close</button >
+                                    </div >
+
+                                </div >
+                            </div >
+                        </div >
+                            ';
+                            }
+                        ?>
+                        <?php
+                            if($currentRoom == $ownedRoom){
+                            echo'
+                            <button type="button" class="createRoomButton" data-toggle="modal" data-target="#inviteUserModal">
+                                Invite User
+                            </button>
+                            <div class="modal" id="inviteUserModal">
+                                <div class="room_creator modal-dialog">
+                                    <div class="room_creator modal-content">
+        
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Invite Your Friends To Your Room!</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+        
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <label for="userName">User Name:</label><br>
+                                                <input type="text" id="userName" name="invited">
+                                                <input type="submit" name="invite">
+                                            </form>
+                                        </div>
+        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+        
+                                    </div>
                                 </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <form action="">
-                                        <label for="roomName">Room name:</label><br>
-                                        <input type="text" id="roomName">
-                                        <input type="submit">
-                                    </form>
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
+                            </div>';
+                            }
+                        ?>
                     </div>
-                </div>
-            </section>
-            <section class="chat">
-                <div class="room_view chat_scroller">
-                    <?php
-                    for($i=0; $i<$roomMessages; $i++){
-                            $userName = $chat->checkMessageSender($messageIDs[$i]);
-                            $text = $chat->checkMessageText($messageIDs[$i], $_REQUEST['currentRoom']);
-                            echo
-                                '<div class="message">
-                                    <img class="photo" src="assets/profile_pictures/' . ($userName) . '.jpg" alt="">
-                                    <div class="message_text">' . ($text) . '</div>
-                                </div>';
-                    }
-                    ?>
+                    </section>
+                    <section class="chat">
+                        <div class="room_view chat_scroller">
+                            <?php
+                            for($i=0; $i<$roomMessages; $i++){
+                                    $userName = $chat->checkMessageSender($messageIDs[$i]);
+                                    $text = $chat->checkMessageText($messageIDs[$i], $_REQUEST['currentRoom']);
+                                    echo
+                                        '<div class="message">
+                                            <img class="photo" src="assets/profile_pictures/' . ($userName) . '.jpg" alt="">
+                                            <div class="message_text">' . ($text) . '</div>
+                                        </div>';
+                            }
+                            ?>
                 </div>
                 <?php
                 //$rand=rand();

@@ -11,20 +11,31 @@
 
     $currentRoom = $_REQUEST['currentRoom'] ?? "";
 
-    $rooms = $chat->checkPublicRooms();
+    $currentUser = 0;
+
+    $currentUser = $_SESSION['id'] ?? "";
+
+    $publicRooms = $chat->checkNumberOfRooms($currentUser);
 
     $roomMessages = $chat->checkRoomMessageNumber($currentRoom);
+
+    $ownedRoom = $chat->checkOwnership($currentUser);
 
     if(array_key_exists('send_message', $_POST)) {
         $chat->sendMessage($_POST['message_field'], $currentRoom);
     }
-    $roomIDs = $chat->checkRoomIDs();
+
+    if(array_key_exists('create', $_POST)) {
+        $chat->createRoom($_POST['roomName'], $currentUser);
+    }
+
+    if(array_key_exists('invite', $_POST)) {
+        $chat->inviteUser($_POST['invited'], $currentRoom);
+    }
+
+
+    $roomIDs = $chat->checkRoomIDs($currentUser);
 
     $messageIDs = $chat->checkMessageIDs($currentRoom);
-
-
-
-
-
 
 require "view/chat.php";

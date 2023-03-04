@@ -10,6 +10,10 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+a:hover{
+  color: darkgoldenrod;
+  text-decoration: none;
+}
 /* === CONVERSATIONS === */
 .chatrooms {
   width: 20%;
@@ -25,20 +29,24 @@ body {
   display:flex;
   align-items: center;
   cursor: pointer;
+  border-bottom: solid 1px goldenrod;
 }
 
 .room_view{
-  height: 76vh;
-  background-color: transparent;
+  height: 80vh;
+  background-color: black;
   overflow: auto;
 }
 
 .chatroom-active {
-  width: 98.5%;
+  width: 100%;
   height: 60px;
   background-color: #1A1925;
-  border-bottom: solid 1px goldenrod;
-  border-top: solid 1px goldenrod;
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: solid 1px darkgoldenrod;
+  border-right: solid 5px darkgoldenrod;
 }
 
 .photo {
@@ -72,12 +80,12 @@ body {
 }
 
 .chat {
-  width: 65%;
+  width: 80%;
 }
 
 .footer-chat {
   width: 80%;
-  height: 12%;
+  height: 10vh;
   display:flex;
   align-items: center;
   position:absolute;
@@ -88,12 +96,12 @@ body {
 
 .footer-rooms{
   width: 20%;
-  height: 8vh;
+  height: 10vh;
   display:flex;
   align-items: center;
   position:absolute;
   bottom: 0;
-  background-color: black;
+  background-color: white;
   border-top: 2px solid goldenrod;
   border-right: 2px solid goldenrod;
 }
@@ -128,6 +136,21 @@ body {
 .room_creator{
   background: #101013;
 }
+
+.createRoomButton{
+  color: goldenrod;
+  border: transparent;
+  background: transparent;
+  outline: none;
+}
+
+.createRoomButton:focus{
+  color: goldenrod;
+  border: transparent;
+  background: transparent;
+  outline: none;
+}
+
 
 /* width */
 ::-webkit-scrollbar {

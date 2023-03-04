@@ -9,9 +9,25 @@ class Chatroom{
     function __construct($db){
         $this->db=$db;
     }
-    public function checkPublicRooms(){
+    public function checkOwnership($currentUser){
+        $owned = 0;
+        $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."' AND membership_type = 1";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $owned = $row['chat_id'];
+            }
+        }
+        return $owned;
+    }
+    public function checkNumberOfRooms($currentUser){
         $numberOfRooms = "";
         $sql = "SELECT * FROM chat WHERE publicity = 1";
+        if($result = $this->db->dbselect($sql)) {
+            while($row = $result->fetch_assoc()){
+                $numberOfRooms++;
+            }
+        }
+        $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
                 $numberOfRooms++;
@@ -29,7 +45,7 @@ class Chatroom{
         }
         return $chatName;
     }
-    public function checkRoomIDs(){
+    public function checkRoomIDs($currentUser){
         $i = 0;
         $sql = "SELECT * FROM chat";
         if($result = $this->db->dbselect($sql)) {
@@ -38,6 +54,14 @@ class Chatroom{
                 $i++;
             }
         }
+        $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."'";
+        if($result = $this->db->dbselect($sql)) {
+            while($row = $result->fetch_assoc()){
+                $ID[$i] = $row['chat_id'];
+                $i++;
+            }
+        }
+
         return $ID;
     }
     public function checkRoomMessageNumber($roomNumber){
@@ -99,8 +123,28 @@ class Chatroom{
         }
         return $username;
     }
-    public function createRoom($chatName){
+    public function createRoom($chatName, $currentUser){
+        $createdRoomID = "";
         $sql = "INSERT INTO chat (chat_id, chat_name, publicity, owner_id) VALUES (NULL,'".$chatName."',2,'".$_SESSION["id"]."')";
+        $result = $this->db->dbinsert($sql);
+        $sql = "SELECT chat_id FROM chat WHERE chat_name = '".$chatName."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $createdRoomID = $row["chat_id"];
+            }
+        }
+        $sql = "INSERT INTO membership (id, user_id, chat_id, membership_type) VALUES (NULL,'".$currentUser."','".$createdRoomID."',1)";
+        $result = $this->db->dbinsert($sql);
+    }
+    public function inviteUser($userName,$roomID){
+        $invitedUser = 0;
+        $sql = "SELECT * FROM user WHERE userName LIKE '".$userName."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $invitedUser = $row["userID"];
+            }
+        }
+        $sql = "INSERT INTO membership (id, user_id, chat_id, membership_type) VALUES (NULL,'".$invitedUser."','".$roomID."',2)";
         $result = $this->db->dbinsert($sql);
     }
 

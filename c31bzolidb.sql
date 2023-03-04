@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 16, 2023 at 02:55 PM
--- Server version: 10.3.36-MariaDB-0+deb10u2
+-- Generation Time: Mar 04, 2023 at 02:23 PM
+-- Server version: 10.3.38-MariaDB-0+deb10u1
 -- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -30,7 +30,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `category` (
   `cat_id` int(11) NOT NULL,
   `cat_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
+(1, 'General'),
+(2, 'Mathematics');
 
 -- --------------------------------------------------------
 
@@ -43,14 +51,32 @@ CREATE TABLE `chat` (
   `chat_name` varchar(100) NOT NULL,
   `publicity` int(11) NOT NULL,
   `owner_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat`
 --
 
 INSERT INTO `chat` (`chat_id`, `chat_name`, `publicity`, `owner_id`) VALUES
-(1, 'General', 1, 10);
+(1, 'General', 1, 33),
+(2, 'Mathematics', 1, 33),
+(5, 'Room Name', 2, 33),
+(6, '', 2, 33),
+(7, '', 2, 33),
+(8, '', 2, 33),
+(9, '', 2, 33),
+(10, 'tester', 2, 33),
+(11, 'tester', 2, 33),
+(12, 'tester', 2, 33),
+(13, 'tester', 2, 33),
+(14, 'tester', 2, 33),
+(15, 'tester', 2, 33),
+(16, 'tester', 2, 33),
+(17, 'tester', 2, 33),
+(18, 'tester', 2, 33),
+(19, 'tester', 2, 33),
+(20, 'tester', 2, 33),
+(21, 'tester', 2, 33);
 
 -- --------------------------------------------------------
 
@@ -62,7 +88,7 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `comment_content` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -74,7 +100,7 @@ CREATE TABLE `further_comments` (
   `f_comment_id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
   `f_comment_content` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -87,7 +113,33 @@ CREATE TABLE `membership` (
   `user_id` int(11) NOT NULL,
   `chat_id` int(11) NOT NULL,
   `membership_type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `membership`
+--
+
+INSERT INTO `membership` (`id`, `user_id`, `chat_id`, `membership_type`) VALUES
+(3, 33, 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `membership_type`
+--
+
+CREATE TABLE `membership_type` (
+  `type_id` int(11) NOT NULL,
+  `type_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `membership_type`
+--
+
+INSERT INTO `membership_type` (`type_id`, `type_name`) VALUES
+(1, 'owner'),
+(2, 'member');
 
 -- --------------------------------------------------------
 
@@ -101,7 +153,7 @@ CREATE TABLE `messages` (
   `message_content` varchar(1000) NOT NULL,
   `message_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `chat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -116,7 +168,7 @@ CREATE TABLE `post` (
   `post_content` varchar(1000) NOT NULL,
   `post_image_path` varchar(100) DEFAULT NULL,
   `cat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -127,7 +179,7 @@ CREATE TABLE `post` (
 CREATE TABLE `Publicity` (
   `id` int(11) NOT NULL,
   `p_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Publicity`
@@ -151,7 +203,7 @@ CREATE TABLE `reaction` (
   `f_comments_id` int(11) DEFAULT NULL,
   `liked` tinyint(1) NOT NULL,
   `disliked` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -161,25 +213,30 @@ CREATE TABLE `reaction` (
 
 CREATE TABLE `user` (
   `userID` int(11) NOT NULL,
-  `userEmail` varchar(100) NOT NULL,
   `userName` varchar(100) NOT NULL,
+  `userEmail` varchar(100) NOT NULL,
   `userPassword` varchar(100) NOT NULL,
   `userType` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `userEmail`, `userName`, `userPassword`, `userType`) VALUES
-(10, 'example@email.com', 'tester', '179ad45c6ce2cb97cf1029e212046e81', 1),
-(26, 'hosszufasz69@kuki.hu', 'HeilHilter', '6652f1488aff7d45ce587ebf5d2c0efb', 1),
-(30, 'Szar@Selectusers.net', 'DrSenkihazi', '5fd913ce9a195ccd408ef63c7752db09', 1),
-(33, 'bazsizolika@gmail.com', 'Zotlan', '391095d7004733654636ffe5d68053f8', 3),
-(37, 'Szar@S1electusers.net', 'DrSenkihazi2', '8f3ba5fd2beac46774ceba7798b4e2c4', 1),
-(38, 'SB@F1.hu', 'SebastianVettel', '6652f1488aff7d45ce587ebf5d2c0efb', 1),
-(39, 'asd@gmail.asd', 'ad', 'ab2b0d90bfaa90b8db4763b74b9f75b4', 1),
-(40, 'jozsef.bicsak@nebet.hu', 'bicsiteszt', '85ff04a72d4d50d1924be51d94fcb1df', 1);
+INSERT INTO `user` (`userID`, `userName`, `userEmail`, `userPassword`, `userType`) VALUES
+(26, 'HeilHilter', '0f5e8ee3a6bd7490985c9224b893ec63', '6652f1488aff7d45ce587ebf5d2c0efb', 1),
+(30, 'DrSenkihazi', 'a1ad177fc7a6b5373018326d03fe5e4d', '5fd913ce9a195ccd408ef63c7752db09', 1),
+(33, 'Zotlan', '4313364fdcd951df53eae7da25f12057', '391095d7004733654636ffe5d68053f8', 3),
+(37, 'DrSenkihazi2', '755fedeead5b7242e87225628dbd064f', '8f3ba5fd2beac46774ceba7798b4e2c4', 1),
+(38, 'SebastianVettel', 'ebb27a67f4d790211d5916f118e86862', '6652f1488aff7d45ce587ebf5d2c0efb', 1),
+(39, 'ad', 'ed70e8869404c4e0c7eb6a7d83afa7b0', 'ab2b0d90bfaa90b8db4763b74b9f75b4', 1),
+(40, 'bicsiteszt', '000025d20db984ed0ad38105cc6ce71c', '85ff04a72d4d50d1924be51d94fcb1df', 1),
+(41, 'Plisa84', '487acb19827952443c38d425862392d7', 'd0573354ecf7269ae370cf61a294e4ec', 1),
+(43, 'Cradle76', '58d9b21b31dad5db995dca0d707bf60d', 'b8dd7f1a2c678170167346f6e0130efa', 1),
+(44, 'asd', 'c89befacfb823e2b03135e27c616b743', '4fc770b0cb055f12759542dbf2ba916e', 1),
+(45, 'Hemi', '5a6b7fc900b461aa99ef34dcf5f67ca3', 'dfa1d0f5f9cf058d366568a4b081fac3', 1),
+(46, 'MikeOxlong', '379cde01d37ce7dd527f847f52a8e570', 'e3345e46f057bef14b391dd9914b6915', 1),
+(49, 'tester', '8c3fe1ad25e6d5f47512ea7365419966', '391095d7004733654636ffe5d68053f8', 1);
 
 -- --------------------------------------------------------
 
@@ -190,7 +247,7 @@ INSERT INTO `user` (`userID`, `userEmail`, `userName`, `userPassword`, `userType
 CREATE TABLE `user_type` (
   `type_id` int(11) NOT NULL,
   `type_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_type`
@@ -245,6 +302,12 @@ ALTER TABLE `membership`
   ADD KEY `membership_type` (`membership_type`);
 
 --
+-- Indexes for table `membership_type`
+--
+ALTER TABLE `membership_type`
+  ADD PRIMARY KEY (`type_id`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -297,13 +360,13 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -321,13 +384,19 @@ ALTER TABLE `further_comments`
 -- AUTO_INCREMENT for table `membership`
 --
 ALTER TABLE `membership`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `membership_type`
+--
+ALTER TABLE `membership_type`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -351,7 +420,7 @@ ALTER TABLE `reaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
@@ -380,8 +449,9 @@ ALTER TABLE `further_comments`
 -- Constraints for table `membership`
 --
 ALTER TABLE `membership`
-  ADD CONSTRAINT `membership_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `membership_ibfk_2` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`);
+  ADD CONSTRAINT `membership_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `membership_ibfk_2` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `membership_ibfk_3` FOREIGN KEY (`membership_type`) REFERENCES `membership_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `messages`
