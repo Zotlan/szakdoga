@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <?php
-        $page = "";
-        $page = $_REQUEST['page'] ?? "";
-        switch ($page){
-            case "chat":
-                echo '<link rel="stylesheet" href="assets/css/chat_style.css">';
-                break;
-        }
-        ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <?php
+    $page = "";
+    $page = $_REQUEST['page'] ?? "";
+    switch ($page){
+        case "chat":
+            echo '<link rel="stylesheet" href="assets/css/chat_style.css">';
+            break;
+        case "forum":
+            echo '<link rel="stylesheet" href="assets/css/forum_style.css">';
+            break;
+    }
+    ?>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 
@@ -45,7 +48,7 @@
         if(isset($_SESSION['id'])){
             echo'
                                     <div class="btn-group dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
                                         if (file_exists('assets/profile_pictures/'.$_SESSION['username'].'.jpg')) {
                                         echo '<img class="ppic" src="assets/profile_pictures/'.$_SESSION['username'].'.jpg" width="50" height="50">';
                                         } else {
@@ -55,7 +58,6 @@
                                         '</button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="nav-link" href="index.php?page=profile"><img src="assets/icons/profile.png" width="50" height="50"> Profile</a>
-                                            <a class="nav-link" href="index.php?page=mailbox"><img src="assets/icons/mailbox.png" width="50" height="50">Notifications</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="nav-link" href="index.php?page=login&action=logout"><img src="assets/icons/logout.png" width="50" height="50"> Logout</a>
                                         </div>

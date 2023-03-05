@@ -16,9 +16,14 @@ ul{
 }
 .btn:hover {
   background-color: transparent;
+  color: darkgoldenrod;
 }
 .btn:active {
   background-color: transparent;
+}
+.btn:focus{
+  outline: none;
+  box-shadow: none;
 }
 .button-secondary:hover{
   color: goldenrod;

@@ -28,33 +28,27 @@ include "layout/head.php";
                         <?php
                             if($ownedRoom == 0) {
                             echo'
-                            <button type = "button" class="createRoomButton" data-toggle = "modal" data-target = "#creatRoomModal" >
-                                Create Room
-                            </button >
-                            <div class="modal" id = "creatRoomModal" >
-                            <div class="room_creator modal-dialog" >
-                                <div class="room_creator modal-content" >
-
-                                    <div class="modal-header" >
-                                        <h4 class="modal-title" > Create Your Own private Room!</h4 >
-                                        <button type = "button" class="close" data-dismiss = "modal" >&times;</button >
-                                    </div >
-
-                                    <div class="modal-body" >
+                            <div>
+                            <a href="#openModal">Create Room</a>
+                
+                            <div id="openModal" class="modalDialog">
+                                <div>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"> Create Your Own private Room!</h4>
+                                        
+                                    </div>
+                                    <div class="modal-body">
                                         <form action = "" method="post">
-                                            <label for="roomName" > Room name:</label ><br >
+                                            <label for="roomName" > Room name:</label><br>
                                             <input type = "text" id = "roomName" name="roomName">
-                                            <input type = "submit" name = "create" >
-                                        </form >
-                                    </div >
-
-                                    <div class="modal-footer" >
-                                        <button type = "button" class="btn btn-danger" data-dismiss = "modal" > Close</button >
-                                    </div >
-
-                                </div >
-                            </div >
-                        </div >
+                                            <input type = "submit" name = "create">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#close" title="Close" class="close">Close</a>
+                                    </div>
+                                </div>
+                            </div>
                             ';
                             }
                         ?>
@@ -93,7 +87,7 @@ include "layout/head.php";
                     </div>
                     </section>
                     <section class="chat">
-                        <div class="room_view chat_scroller">
+                        <div class="room_view chat_scroller" id="room_view">
                             <?php
                             for($i=0; $i<$roomMessages; $i++){
                                     $userName = $chat->checkMessageSender($messageIDs[$i]);
@@ -126,6 +120,23 @@ include "layout/head.php";
             </section>
         </div>
     </div>
+
+    <script  type="text/javascript">
+        setInterval(function() {
+            $("#room_view").load(location.href+" #room_view>*","");
+        }, 1);
+        /*setInterval(refreshBlock, 100);
+        //window.onload = setupRefresh;
+        function setupRefresh()
+        {
+            setInterval("refreshBlock();",100);
+        }
+
+        function refreshBlock()
+        {
+            $('#message').load("view/chat.php");
+        }*/
+    </script>
 <?php
 include 'view/layout/footer.php';
 ?>

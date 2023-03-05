@@ -1,0 +1,217 @@
+body {
+    background-color: #101013;
+    color: #daa520;
+    overflow: hidden;
+}
+.uv{
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 88vh;
+    justify-content: center;
+    flex-direction: row;
+}
+a:hover{
+    color: darkgoldenrod;
+    text-decoration: none;
+}
+.modal-backdrop{
+
+}
+
+
+.toolbar{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+.searchbar{
+    width: 100%;
+    display: flex;
+    height: 30px;
+    justify-content: start;
+}
+.s-bar{
+    width: 75%;
+    border-right: 2px solid goldenrod;
+    border-bottom: 2px solid goldenrod;
+    border-top: none;
+    border-left: none;
+    background-color: #1A1925;
+    color: goldenrod;
+}
+.s-button{
+    background: none;
+    border: none;
+    outline: none;
+}
+.s-button:active{
+    background: none;
+    border: none;
+    outline: none;
+}
+.s-button > img{
+    height: 25px;
+    width: 25px;
+}
+
+.collapsible {
+    background-color: #1A1925;
+    color: goldenrod;
+    cursor: pointer;
+    width: 50%;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+.active, .collapsible:hover .collapsible:active{
+    background-color: #1A1925;
+    border: none;
+    outline: none;
+}
+.collapsible:focus{
+    background-color: #1A1925;
+    border: none;
+    outline: none;
+}
+.active:focus{
+    background-color: #1A1925;
+    border: none;
+    outline: none;
+}
+.content {
+    max-height: 0;
+    width: 50%;
+    text-align: left;
+    padding-left: 5px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #1A1925;
+}
+
+.create_post{
+    height: 30px;
+}
+.post-button{
+    background: white;
+    color: goldenrod;
+}
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+}
+.close {
+    background: #1A1925;
+    color: goldenrod;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    text-shadow: none;
+}
+.close:hover{
+    background: black;
+    color: darkgoldenrod;
+}
+
+
+.posts{
+    width: 50%;
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.post{
+    display: flex;
+    height: 500px;
+    width: 100%;
+    align-items: center;
+    border: 2px solid goldenrod;
+    background-color: #1A1925;
+    margin: 10px;
+}
+.post-content{
+    width: 100%;
+    display: flex;
+    height: 200px;
+}
+.post-header{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid goldenrod;
+}
+.post-name{
+    margin-left: 10px;
+}
+.post-category{
+    margin-right: 10px;
+}
+
+
+.void{
+    display: flex;
+    height: 88vh;
+    width: 25%;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1A1925;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: darkgoldenrod;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darkgoldenrod;
+}
+
+.chat_scroller {
+    overflow-y: auto;
+    scrollbar-color: darkgoldenrod #1A1925;
+    scrollbar-width: thin;
+}

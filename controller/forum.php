@@ -1,68 +1,18 @@
 <?php
 
+    require 'model/forum.php';
+    $forum= new Forum($db);
+
     $action = "";
 
     $action = $_REQUEST['action'] ?? "";
 
-    switch ($action){
-        case 'math':
-            
+    $numberOfPosts = 0;
 
-        break;
+    $numberOfPosts = $forum->checkPostNumber();
 
-        //literature
-        case 'lit':
-            
+    $Cats = 0;
 
-        break;
-
-        //history
-        case 'his':
-        
-
-        break;
-
-        //biology
-        case 'bio':
-            
-            
-        break;
-
-        //physics
-        case 'phy':
-            
-            
-        break;
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $Cats = $forum->checkCategoryNumber();
 
 require "view/forum.php";

@@ -17,7 +17,7 @@
 
     switch ($action){
         case 'logout':
-            session_unset();
+            session_destroy();
             $loginResult = "Logged out Successful";
         break;
 

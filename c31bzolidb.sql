@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 04, 2023 at 02:23 PM
+-- Generation Time: Mar 05, 2023 at 07:00 PM
 -- Server version: 10.3.38-MariaDB-0+deb10u1
 -- PHP Version: 7.4.33
 
@@ -60,23 +60,9 @@ CREATE TABLE `chat` (
 INSERT INTO `chat` (`chat_id`, `chat_name`, `publicity`, `owner_id`) VALUES
 (1, 'General', 1, 33),
 (2, 'Mathematics', 1, 33),
-(5, 'Room Name', 2, 33),
-(6, '', 2, 33),
-(7, '', 2, 33),
-(8, '', 2, 33),
-(9, '', 2, 33),
-(10, 'tester', 2, 33),
-(11, 'tester', 2, 33),
-(12, 'tester', 2, 33),
-(13, 'tester', 2, 33),
-(14, 'tester', 2, 33),
-(15, 'tester', 2, 33),
-(16, 'tester', 2, 33),
-(17, 'tester', 2, 33),
-(18, 'tester', 2, 33),
-(19, 'tester', 2, 33),
-(20, 'tester', 2, 33),
-(21, 'tester', 2, 33);
+(23, 'szar', 2, 50),
+(24, 'asd', 2, 50),
+(25, 'your mom gay', 2, 46);
 
 -- --------------------------------------------------------
 
@@ -120,7 +106,9 @@ CREATE TABLE `membership` (
 --
 
 INSERT INTO `membership` (`id`, `user_id`, `chat_id`, `membership_type`) VALUES
-(3, 33, 5, 1);
+(23, 50, 23, 1),
+(24, 50, 24, 1),
+(25, 46, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -154,6 +142,38 @@ CREATE TABLE `messages` (
   `message_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `chat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `user_id`, `message_content`, `message_timestamp`, `chat_id`) VALUES
+(89, 33, 'hello', '2023-03-05 17:52:06', 1),
+(90, 33, 'you here', '2023-03-05 17:52:12', 1),
+(91, 49, 'sure i am', '2023-03-05 17:52:24', 1),
+(92, 33, 'yeeeeeeeeeeeeeeeeeeeeees', '2023-03-05 17:52:28', 1),
+(93, 33, 'its alive', '2023-03-05 17:52:34', 1),
+(94, 49, 'shit works like a charm', '2023-03-05 17:52:38', 1),
+(95, 49, 'still ugly as fuck', '2023-03-05 17:52:46', 1),
+(96, 33, 'well thats a stretch', '2023-03-05 17:52:47', 1),
+(97, 33, 'well yeah', '2023-03-05 17:52:54', 1),
+(98, 33, 'again', '2023-03-05 17:52:58', 1),
+(99, 33, ' not a ui designer', '2023-03-05 17:53:06', 1),
+(100, 49, 'one thing', '2023-03-05 17:53:18', 1),
+(101, 33, 'and its a bit rough still in terms of back-end too', '2023-03-05 17:53:26', 1),
+(102, 49, 'chat wont follow scrolling', '2023-03-05 17:53:36', 1),
+(103, 49, 'shit annoying it just goes back ', '2023-03-05 17:53:51', 1),
+(104, 49, 'at the start of the convo', '2023-03-05 17:54:08', 1),
+(105, 33, 'like i said still rough around the edges', '2023-03-05 17:54:11', 1),
+(106, 46, 'oi cunts', '2023-03-05 17:54:45', 1),
+(107, 33, 'hey there', '2023-03-05 17:55:34', 1),
+(108, 49, 'who u', '2023-03-05 17:55:40', 1),
+(109, 33, 'dont use special charcters', '2023-03-05 17:55:43', 1),
+(110, 49, 'special needs characters', '2023-03-05 17:55:59', 1),
+(111, 33, 'ill fix it tomorrow', '2023-03-05 17:56:26', 1),
+(112, 33, 'along with the scroll wheel', '2023-03-05 17:56:36', 1),
+(113, 33, 'but now im gonna go commit and eat dinner', '2023-03-05 17:56:51', 1),
+(114, 33, 'see ya bastards', '2023-03-05 17:56:56', 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +256,8 @@ INSERT INTO `user` (`userID`, `userName`, `userEmail`, `userPassword`, `userType
 (44, 'asd', 'c89befacfb823e2b03135e27c616b743', '4fc770b0cb055f12759542dbf2ba916e', 1),
 (45, 'Hemi', '5a6b7fc900b461aa99ef34dcf5f67ca3', 'dfa1d0f5f9cf058d366568a4b081fac3', 1),
 (46, 'MikeOxlong', '379cde01d37ce7dd527f847f52a8e570', 'e3345e46f057bef14b391dd9914b6915', 1),
-(49, 'tester', '8c3fe1ad25e6d5f47512ea7365419966', '391095d7004733654636ffe5d68053f8', 1);
+(49, 'tester', '8c3fe1ad25e6d5f47512ea7365419966', '391095d7004733654636ffe5d68053f8', 1),
+(50, 'asdasdasd', '92c32b4a46a35225298a5cf8e871953c', '450c226525d6248377b2a374ab79041d', 1);
 
 -- --------------------------------------------------------
 
@@ -366,7 +387,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -384,7 +405,7 @@ ALTER TABLE `further_comments`
 -- AUTO_INCREMENT for table `membership`
 --
 ALTER TABLE `membership`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `membership_type`
@@ -396,7 +417,7 @@ ALTER TABLE `membership_type`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -420,7 +441,7 @@ ALTER TABLE `reaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
@@ -430,20 +451,20 @@ ALTER TABLE `user`
 -- Constraints for table `chat`
 --
 ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`publicity`) REFERENCES `Publicity` (`id`);
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`publicity`) REFERENCES `Publicity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `further_comments`
 --
 ALTER TABLE `further_comments`
-  ADD CONSTRAINT `further_comments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`comment_id`);
+  ADD CONSTRAINT `further_comments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`comment_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `membership`
@@ -457,30 +478,30 @@ ALTER TABLE `membership`
 -- Constraints for table `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`);
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`);
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`poster_id`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reaction`
 --
 ALTER TABLE `reaction`
-  ADD CONSTRAINT `reaction_ibfk_1` FOREIGN KEY (`f_comments_id`) REFERENCES `further_comments` (`f_comment_id`),
-  ADD CONSTRAINT `reaction_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  ADD CONSTRAINT `reaction_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `reaction_ibfk_4` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`comment_id`);
+  ADD CONSTRAINT `reaction_ibfk_1` FOREIGN KEY (`f_comments_id`) REFERENCES `further_comments` (`f_comment_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reaction_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reaction_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reaction_ibfk_4` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`comment_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`userType`) REFERENCES `user_type` (`type_id`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`userType`) REFERENCES `user_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
