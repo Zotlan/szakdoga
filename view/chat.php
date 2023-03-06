@@ -5,47 +5,71 @@ include "layout/head.php";
     <div class="uiv">
         <div class="uv">
             <section class="chatrooms chat_scroller">
+                <div id="rooms">
                 <?php
-                for($i=0; $i<$publicRooms; $i++){
-                    $chatName = $chat->checkRoomNames($roomIDs[$i]);
-                    if ($roomIDs[$i] == $currentRoom){
+                for($i=0; $i<$publics; $i++){
+                    $chatName = $chat->checkRoomNames($publicIDs[$i]);
+                    if ($publicIDs[$i] == $currentRoom){
                         $class = "chatroom-active";
                     }
                     else{
                         $class = "chatroom";
                     }
                     echo '
-                    <a href="index.php?page=chat&currentRoom='.($roomIDs[$i]).'">
+                    <a href="index.php?page=chat&currentRoom='.($publicIDs[$i]).'">
                     <div class="'.$class.'">
                         <div class="room_name">'.($chatName).'</div>
                         <!--<div class="notify"></div >-->
                     </div >
                     </a>';
                 }
+                if($privates != 0){
+                    for ($i = 0; $i < $privates; $i++) {
+                        $chatName = $chat->checkRoomNames($privateIDs[$i]);
+                        if ($privateIDs[$i] == $currentRoom) {
+                            $class = "chatroom-active";
+                        } else {
+                            $class = "chatroom";
+                        }
+                        echo '
+                    <a href="index.php?page=chat&currentRoom=' . ($privateIDs[$i]) . '">
+                    <div class="' . $class . '">
+                        <div class="room_name">' . ($chatName) . '</div>
+                    </div >
+                    </a>';
+                    }
+                }
                 ?>
-
+                </div>
                     <div class="footer-rooms" >
                         <?php
                             if($ownedRoom == 0) {
                             echo'
                             <div>
-                            <a href="#openModal">Create Room</a>
-                
-                            <div id="openModal" class="modalDialog">
-                                <div>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title"> Create Your Own private Room!</h4>
-                                        
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action = "" method="post">
-                                            <label for="roomName" > Room name:</label><br>
-                                            <input type = "text" id = "roomName" name="roomName">
-                                            <input type = "submit" name = "create">
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#close" title="Close" class="close">Close</a>
+                            <button type="button" class="createRoomButton" data-toggle="modal" data-target="#inviteUserModal">
+                                Create Room
+                            </button>
+                            <div class="modal" id="inviteUserModal">
+                                <div class="room_creator modal-dialog">
+                                    <div class="room_creator modal-content">
+        
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Create Your Own private Room!</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+        
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <label for="roomName" > Room name:</label><br>
+                                                <input type = "text" id = "roomName" name="roomName">
+                                                <input type = "submit" name = "create">
+                                            </form>
+                                        </div>
+        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+        
                                     </div>
                                 </div>
                             </div>
@@ -122,20 +146,7 @@ include "layout/head.php";
     </div>
 
     <script  type="text/javascript">
-        setInterval(function() {
-            $("#room_view").load(location.href+" #room_view>*","");
-        }, 1);
-        /*setInterval(refreshBlock, 100);
-        //window.onload = setupRefresh;
-        function setupRefresh()
-        {
-            setInterval("refreshBlock();",100);
-        }
-
-        function refreshBlock()
-        {
-            $('#message').load("view/chat.php");
-        }*/
+        setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 1000);
     </script>
 <?php
 include 'view/layout/footer.php';

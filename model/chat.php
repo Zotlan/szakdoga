@@ -19,7 +19,7 @@ class Chatroom{
         }
         return $owned;
     }
-    public function checkNumberOfRooms($currentUser){
+    public function checkNumberOfPublics(){
         $numberOfRooms = "";
         $sql = "SELECT * FROM chat WHERE publicity = 1";
         if($result = $this->db->dbselect($sql)) {
@@ -27,6 +27,10 @@ class Chatroom{
                 $numberOfRooms++;
             }
         }
+        return $numberOfRooms;
+    }
+    public function checkNumberOfPrivates($currentUser){
+        $numberOfRooms = 0;
         $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
@@ -45,7 +49,7 @@ class Chatroom{
         }
         return $chatName;
     }
-    public function checkRoomIDs($currentUser){
+    public function checkPublicIDs(){
         $i = 0;
         $sql = "SELECT * FROM chat";
         if($result = $this->db->dbselect($sql)) {
@@ -54,6 +58,10 @@ class Chatroom{
                 $i++;
             }
         }
+        return $ID;
+    }
+    public function checkPrivateIDs($currentUser){
+        $i = 0;
         $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
@@ -61,8 +69,11 @@ class Chatroom{
                 $i++;
             }
         }
+        if(empty($ID)){}
+        else{
+            return $ID;
+        }
 
-        return $ID;
     }
     public function checkRoomMessageNumber($roomNumber){
         $roomMessages = "";

@@ -15,26 +15,29 @@
 
     $currentUser = $_SESSION['id'] ?? "";
 
-    $publicRooms = $chat->checkNumberOfRooms($currentUser);
+    $publics = $chat->checkNumberOfPublics();
+
+    $privates = $chat->checkNumberOfPrivates($currentUser);
 
     $roomMessages = $chat->checkRoomMessageNumber($currentRoom);
 
     $ownedRoom = $chat->checkOwnership($currentUser);
 
     if(array_key_exists('send_message', $_POST)) {
-        $chat->sendMessage($_POST['message_field'], $currentRoom);
+        $chat->sendMessage(htmlspecialchars($_POST['message_field']), $currentRoom);
     }
 
     if(array_key_exists('create', $_POST)) {
-        $chat->createRoom($_POST['roomName'], $currentUser);
+        $chat->createRoom(htmlspecialchars($_POST['roomName']), $currentUser);
     }
 
     if(array_key_exists('invite', $_POST)) {
-        $chat->inviteUser($_POST['invited'], $currentRoom);
+        $chat->inviteUser(htmlspecialchars($_POST['invited']), $currentRoom);
     }
 
+    $publicIDs = $chat->checkPublicIDs();
 
-    $roomIDs = $chat->checkRoomIDs($currentUser);
+    $privateIDs = $chat->checkPrivateIDs($currentUser);
 
     $messageIDs = $chat->checkMessageIDs($currentRoom);
 
