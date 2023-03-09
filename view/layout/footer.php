@@ -6,6 +6,16 @@
         window.history.replaceState( null, null, window.location.href );
     }
 </script>
+<script>
+    //This script is for the post modal on the forum page
+    var modal = document.getElementById('id01');
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
     var coll = document.getElementsByClassName("collapsible");

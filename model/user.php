@@ -21,7 +21,6 @@ class User{
             if($row = $result->fetch_assoc()){
                 //checks if there is a user with the inputted username
                 if($row['userName'] == $username){
-                    //echo $username;
                     //checks if the password is correct, it works now
                     if($row['userPassword'] == md5($password)){
                         $loginResult = 2 ;//successful login
@@ -42,15 +41,25 @@ class User{
         }
         return $loginResult;
     }
+    public function uploadProfilePic(){
+        $target_dir = "assets/profile_pictures/";
+        $target_file = $target_dir. $_SESSION['username'].".jpg";
 
+        if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars(basename($_FILES["profilePic"]["tmp_name"])). " has been uploaded.<br>";
+        }
+        else {
+            echo "Sorry, there was an error uploading your file.<br>";
+        }
+    }
     //this function checks if the email address is valid so that it may be inserted into the database.
-    //Doesn't work atm.
     public function checkEmail($Email){
 
         //$email = $_POST["email"];
         $emailValid = "";
 
         //checks if the email address is already registered
+        $emailValid = 0;
         $sql="SELECT * FROM user WHERE userEmail = '".$_POST['email']."'";
         if($result = $this->db->dbselect($sql)){
             if($row = $result->fetch_assoc()){
@@ -59,13 +68,8 @@ class User{
                 }
             }
         }
-        elseif(strpos($Email, "@") && strpos($Email, ".")){
-            $emailValid = 1;
-            //echo "email: ".$_POST['email']."<br>";
-            //echo "emailValid: ".$emailValid."<br>";
-        }
         else{
-            echo "The email address isn't real";
+            $emailValid = 1;
         }
         return $emailValid;
     }

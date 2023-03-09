@@ -51,6 +51,7 @@ class Chatroom{
     }
     public function checkPublicIDs(){
         $i = 0;
+        $ID[$i] = "";
         $sql = "SELECT * FROM chat";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
@@ -62,6 +63,7 @@ class Chatroom{
     }
     public function checkPrivateIDs($currentUser){
         $i = 0;
+        $ID[$i] = "";
         $sql = "SELECT * FROM membership WHERE user_id = '".$currentUser."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
@@ -73,7 +75,6 @@ class Chatroom{
         else{
             return $ID;
         }
-
     }
     public function checkRoomMessageNumber($roomNumber){
         $roomMessages = "";
@@ -146,6 +147,25 @@ class Chatroom{
         }
         $sql = "INSERT INTO membership (id, user_id, chat_id, membership_type) VALUES (NULL,'".$currentUser."','".$createdRoomID."',1)";
         $result = $this->db->dbinsert($sql);
+    }
+    public function checkMembership($userName,$roomID){
+        $invitedUser = "";
+        $inviteValid = 1;
+        $sql = "SELECT * FROM user WHERE userName LIKE '".$userName."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $invitedUser = $row["userID"];
+            }
+        }
+        echo $invitedUser;
+        echo $roomID;
+        $sql = "SELECT * FROM membership WHERE user_id ='".$invitedUser."' AND chat_id = '".$roomID."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $inviteValid = 0;
+            }
+        }
+        return $inviteValid;
     }
     public function inviteUser($userName,$roomID){
         $invitedUser = 0;

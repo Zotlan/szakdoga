@@ -9,23 +9,37 @@ include "layout/head.php";
                     <button class="s-button" type="submit"><img src="assets/icons/search.png"></button >
                 </form>
             </div>
-            <?php
-            //This modal was created using the tutorial under this link:https://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/
-            ?>
+            <br>
             <div>
-            <a href="#openModal">Post</a>
+                <button class="p-button" onclick="document.getElementById('id01').style.display='block'">Post</button>
 
-            <div id="openModal" class="modalDialog">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <form action="">
-                        <input type="text">
-                        <input type="text">
-                        <input type="submit">
+                <div id="id01" class="modal">
+
+                    <form class="modal-content animate" action="" method="post">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        </div>
+
+                        <div class="container">
+                                <input type="text" name="postTitle" required><br>
+                                <input type="text" name="postContent" required><br>
+                                <select name="postCategory" required>
+                                    <option value="" disabled selected>Choose category</option>
+                                    <?php
+                                    for($i=0; $i<$Cats; $i++){
+                                        $CatName = $forum->checkCategoryName($CatID[$i]);
+                                        echo'
+                                        <option value="'.$CatID[$i].'">'.$CatName.'</option>
+                                        ';
+                                    }
+                                    ?>
+                                </select><br>
+                                <input type="submit" name="sendPost" id="sendPost">
+                        </div>
                     </form>
                 </div>
             </div>
-        </div>
+
             <br>
 
             <button class="collapsible">Categories:</button>

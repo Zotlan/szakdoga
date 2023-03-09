@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2023 at 07:00 PM
+-- Generation Time: Mar 09, 2023 at 08:49 AM
 -- Server version: 10.3.38-MariaDB-0+deb10u1
 -- PHP Version: 7.4.33
 
@@ -60,9 +60,9 @@ CREATE TABLE `chat` (
 INSERT INTO `chat` (`chat_id`, `chat_name`, `publicity`, `owner_id`) VALUES
 (1, 'General', 1, 33),
 (2, 'Mathematics', 1, 33),
-(23, 'szar', 2, 50),
-(24, 'asd', 2, 50),
-(25, 'your mom gay', 2, 46);
+(28, 'F1', 2, 51),
+(30, 'fasz', 2, 52),
+(34, 'Sex room', 2, 46);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,8 @@ INSERT INTO `chat` (`chat_id`, `chat_name`, `publicity`, `owner_id`) VALUES
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `comment_content` varchar(1000) NOT NULL
+  `comment_content` varchar(1000) NOT NULL,
+  `comment_time_stamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -85,7 +86,8 @@ CREATE TABLE `comments` (
 CREATE TABLE `further_comments` (
   `f_comment_id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
-  `f_comment_content` varchar(100) NOT NULL
+  `f_comment_content` varchar(100) NOT NULL,
+  `f_comment_time_stamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -106,9 +108,9 @@ CREATE TABLE `membership` (
 --
 
 INSERT INTO `membership` (`id`, `user_id`, `chat_id`, `membership_type`) VALUES
-(23, 50, 23, 1),
-(24, 50, 24, 1),
-(25, 46, 25, 1);
+(28, 51, 28, 1),
+(30, 52, 30, 1),
+(50, 46, 34, 1);
 
 -- --------------------------------------------------------
 
@@ -148,32 +150,14 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`message_id`, `user_id`, `message_content`, `message_timestamp`, `chat_id`) VALUES
-(89, 33, 'hello', '2023-03-05 17:52:06', 1),
-(90, 33, 'you here', '2023-03-05 17:52:12', 1),
-(91, 49, 'sure i am', '2023-03-05 17:52:24', 1),
-(92, 33, 'yeeeeeeeeeeeeeeeeeeeeees', '2023-03-05 17:52:28', 1),
-(93, 33, 'its alive', '2023-03-05 17:52:34', 1),
-(94, 49, 'shit works like a charm', '2023-03-05 17:52:38', 1),
-(95, 49, 'still ugly as fuck', '2023-03-05 17:52:46', 1),
-(96, 33, 'well thats a stretch', '2023-03-05 17:52:47', 1),
-(97, 33, 'well yeah', '2023-03-05 17:52:54', 1),
-(98, 33, 'again', '2023-03-05 17:52:58', 1),
-(99, 33, ' not a ui designer', '2023-03-05 17:53:06', 1),
-(100, 49, 'one thing', '2023-03-05 17:53:18', 1),
-(101, 33, 'and its a bit rough still in terms of back-end too', '2023-03-05 17:53:26', 1),
-(102, 49, 'chat wont follow scrolling', '2023-03-05 17:53:36', 1),
-(103, 49, 'shit annoying it just goes back ', '2023-03-05 17:53:51', 1),
-(104, 49, 'at the start of the convo', '2023-03-05 17:54:08', 1),
-(105, 33, 'like i said still rough around the edges', '2023-03-05 17:54:11', 1),
-(106, 46, 'oi cunts', '2023-03-05 17:54:45', 1),
-(107, 33, 'hey there', '2023-03-05 17:55:34', 1),
-(108, 49, 'who u', '2023-03-05 17:55:40', 1),
-(109, 33, 'dont use special charcters', '2023-03-05 17:55:43', 1),
-(110, 49, 'special needs characters', '2023-03-05 17:55:59', 1),
-(111, 33, 'ill fix it tomorrow', '2023-03-05 17:56:26', 1),
-(112, 33, 'along with the scroll wheel', '2023-03-05 17:56:36', 1),
-(113, 33, 'but now im gonna go commit and eat dinner', '2023-03-05 17:56:51', 1),
-(114, 33, 'see ya bastards', '2023-03-05 17:56:56', 1);
+(138, 46, 'Oi mate', '2023-03-06 09:08:49', 34),
+(140, 46, 'MikeOxlong', '2023-03-06 09:09:32', 34),
+(147, 51, 'Remélem mindenkinek jó napja van!', '2023-03-06 09:36:13', 1),
+(148, 51, 'Shit', '2023-03-06 09:36:21', 2),
+(149, 46, 'anyád', '2023-03-06 09:36:40', 1),
+(150, 51, 'Szia', '2023-03-06 11:55:46', 1),
+(152, 33, 'hello', '2023-03-09 07:39:27', 1),
+(153, 46, 'wasaaaap', '2023-03-09 07:40:07', 1);
 
 -- --------------------------------------------------------
 
@@ -185,10 +169,17 @@ CREATE TABLE `post` (
   `post_id` int(11) NOT NULL,
   `poster_id` int(11) NOT NULL,
   `post_title` varchar(255) NOT NULL,
+  `cat_id` int(11) NOT NULL,
   `post_content` varchar(1000) NOT NULL,
-  `post_image_path` varchar(100) DEFAULT NULL,
-  `cat_id` int(11) NOT NULL
+  `post_time_stamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `poster_id`, `post_title`, `cat_id`, `post_content`, `post_time_stamp`) VALUES
+(1, 33, 'Hi', 1, 'hello', '2023-03-09 07:47:17');
 
 -- --------------------------------------------------------
 
@@ -257,7 +248,9 @@ INSERT INTO `user` (`userID`, `userName`, `userEmail`, `userPassword`, `userType
 (45, 'Hemi', '5a6b7fc900b461aa99ef34dcf5f67ca3', 'dfa1d0f5f9cf058d366568a4b081fac3', 1),
 (46, 'MikeOxlong', '379cde01d37ce7dd527f847f52a8e570', 'e3345e46f057bef14b391dd9914b6915', 1),
 (49, 'tester', '8c3fe1ad25e6d5f47512ea7365419966', '391095d7004733654636ffe5d68053f8', 1),
-(50, 'asdasdasd', '92c32b4a46a35225298a5cf8e871953c', '450c226525d6248377b2a374ab79041d', 1);
+(50, 'asdasdasd', '92c32b4a46a35225298a5cf8e871953c', '450c226525d6248377b2a374ab79041d', 1),
+(51, 'Seb', 'ebb27a67f4d790211d5916f118e86862', '1bf6717f338767ca7c67adfaa938ca77', 1),
+(52, 'tokrist', '7e77773cf76558d686a9abb01b0b3854', '1c6216b3218aecf26fa3a53b4868adc8', 1);
 
 -- --------------------------------------------------------
 
@@ -387,7 +380,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -405,7 +398,7 @@ ALTER TABLE `further_comments`
 -- AUTO_INCREMENT for table `membership`
 --
 ALTER TABLE `membership`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `membership_type`
@@ -417,13 +410,13 @@ ALTER TABLE `membership_type`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Publicity`
@@ -441,7 +434,7 @@ ALTER TABLE `reaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables

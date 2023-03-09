@@ -2,14 +2,12 @@
 include "layout/head.php";
 ?>
 
-
-    <form action="index.php?page=profile&action=upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="profilePic" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
-        <input type="hidden" name="page" value="profile">
-        <input type="hidden" name="action" value="upload">
-    </form>
-
+    <div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <label for="ppUpload">Upload A Profile Picture</label>
+            <input class="d-none" type="file" id="fileToUpload">
+        </form>
+    </div>
 
 
 

@@ -31,8 +31,15 @@
         $chat->createRoom(htmlspecialchars($_POST['roomName']), $currentUser);
     }
 
+
     if(array_key_exists('invite', $_POST)) {
-        $chat->inviteUser(htmlspecialchars($_POST['invited']), $currentRoom);
+        $inviteValid = $chat->checkMembership($_POST['invited'], $currentRoom);
+        if($inviteValid == 1){
+            $chat->inviteUser(htmlspecialchars($_POST['invited']), $currentRoom);
+        }
+        else{
+            echo 'This user is already part of the chatroom.';
+        }
     }
 
     $publicIDs = $chat->checkPublicIDs();
@@ -40,5 +47,11 @@
     $privateIDs = $chat->checkPrivateIDs($currentUser);
 
     $messageIDs = $chat->checkMessageIDs($currentRoom);
+
+    echo '
+    <script  type="text/javascript">
+        setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 5000);
+    </script>
+    ';
 
 require "view/chat.php";

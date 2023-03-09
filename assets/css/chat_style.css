@@ -17,7 +17,11 @@ a:hover{
 /* === CONVERSATIONS === */
 .chatrooms {
   width: 20%;
-  height: 80vh;
+  height: 88vh;
+}
+.room_list{
+  width: 100%;
+  height: 78vh;
   overflow: auto;
   border-right: 2px solid goldenrod;
   display: inline-block;
@@ -29,15 +33,13 @@ a:hover{
   display:flex;
   align-items: center;
   cursor: pointer;
-  border-bottom: solid 1px goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
-
 .room_view{
-  height: 80vh;
-  background-color: black;
+  height: 78vh;
+  background-color: #1A1925;
   overflow: auto;
 }
-
 .chatroom-active {
   width: 100%;
   height: 60px;
@@ -45,8 +47,11 @@ a:hover{
   display:flex;
   align-items: center;
   cursor: pointer;
-  border-bottom: solid 1px darkgoldenrod;
-  border-right: solid 5px darkgoldenrod;
+  border-bottom: 1px solid goldenrod;
+}
+.room_name {
+  display: flex;
+  align-items: center;
 }
 
 .photo {
@@ -55,16 +60,6 @@ a:hover{
   background: #1A1925;
   border-radius: 50px;
 }
-
-.chatrooms .photo{
-  margin-left: 20px;
-}
-
-.room_name {
-  display: flex;
-  align-items: center;
-}
-
 .message {
   color:#515151;
   display: flex;
@@ -72,7 +67,6 @@ a:hover{
   align-items: center;
   padding: 15px;
 }
-
 .message_text{
   margin-left: 10px;
   display: flex;
@@ -81,15 +75,14 @@ a:hover{
 
 .chat {
   width: 80%;
+  height: 88vh;
 }
-
 .footer-chat {
   width: 80%;
   height: 10vh;
   display:flex;
   align-items: center;
   position:absolute;
-  bottom: 0;
   background-color: white;
   border-top: 2px solid goldenrod;
 }
@@ -100,7 +93,6 @@ a:hover{
   display:flex;
   align-items: center;
   position:absolute;
-  bottom: 0;
   background-color: white;
   border-top: 2px solid goldenrod;
   border-right: 2px solid goldenrod;
@@ -133,55 +125,10 @@ a:hover{
   color: goldenrod;
 }
 
-.room_creator{
+.room_creator {
   background: #101013;
 }
-.modalDialog {
-  position: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 99999;
-  opacity:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  pointer-events: none;
-}
-.modalDialog:target {
-  opacity:1;
-  pointer-events: auto;
-}
 
-.modalDialog > div {
-  width: 400px;
-  position: relative;
-  margin: 10% auto;
-  padding: 5px 20px 13px 20px;
-  border-radius: 10px;
-}
-.close {
-  background: #1A1925;
-  color: goldenrod;
-  line-height: 25px;
-  position: absolute;
-  right: -12px;
-  text-align: center;
-  width: 24px;
-  text-decoration: none;
-  font-weight: bold;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
-  text-shadow: none;
-}
-.close:hover{
-  background: black;
-  color: darkgoldenrod;
-}
 
 .createRoomButton{
   color: goldenrod;

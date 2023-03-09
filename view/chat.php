@@ -4,8 +4,8 @@ include "layout/head.php";
 <!-- This UI is based on a template at https://blog.stackfindover.com/chat-box-design-html-css/ made by Thomas d’Aubenton, but I have excessively modified it, css included.-->
     <div class="uiv">
         <div class="uv">
-            <section class="chatrooms chat_scroller">
-                <div id="rooms">
+            <section class="chatrooms">
+                <div class="room_list chat_scroller" id="rooms">
                 <?php
                 for($i=0; $i<$publics; $i++){
                     $chatName = $chat->checkRoomNames($publicIDs[$i]);
@@ -32,9 +32,9 @@ include "layout/head.php";
                             $class = "chatroom";
                         }
                         echo '
-                    <a href="index.php?page=chat&currentRoom=' . ($privateIDs[$i]) . '">
-                    <div class="' . $class . '">
-                        <div class="room_name">' . ($chatName) . '</div>
+                    <a href="index.php?page=chat&currentRoom='.($privateIDs[$i]).'">
+                    <div class="'.$class.'">
+                        <div class="room_name">'.($chatName).'</div>
                     </div >
                     </a>';
                     }
@@ -144,10 +144,6 @@ include "layout/head.php";
             </section>
         </div>
     </div>
-
-    <script  type="text/javascript">
-        setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 1000);
-    </script>
 <?php
 include 'view/layout/footer.php';
 ?>
