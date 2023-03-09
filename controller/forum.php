@@ -17,6 +17,8 @@
 
     $CatID = $forum->checkCategoryID();
 
+    $postID = $forum->checkPostID();
+
     if(array_key_exists('sendPost', $_POST)) {
         $selected = $_POST['postCategory'];
         $forum->uploadPost(htmlspecialchars($_POST['postTitle']), $selected, htmlspecialchars($_POST['postContent']));

@@ -53,5 +53,16 @@
         setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 5000);
     </script>
     ';
+    echo '
+    <script>
+    function openNav() {
+      document.getElementById("mySidepanel").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidepanel").style.width = "0";
+    }
+    </script>
+    ';
 
 require "view/chat.php";

@@ -9,9 +9,22 @@ include "layout/head.php";
                     <button class="s-button" type="submit"><img src="assets/icons/search.png"></button >
                 </form>
             </div>
+            <button class="collapsible">Categories:</button>
+            <div class="content">
+                <?php
+                for($i=0; $i<$Cats; $i++){
+                    $CatName = $forum->checkCategoryName($CatID[$i]);
+                    echo '
+                    <a href="">'.$CatName.'</a><br>
+                    ';
+                }
+                ?>
+            </div>
             <br>
             <div>
-                <button class="p-button" onclick="document.getElementById('id01').style.display='block'">Post</button>
+                <div class="button-pos">
+                    <button class="p-button" onclick="document.getElementById('id01').style.display='block'">Post</button>
+                </div>
 
                 <div id="id01" class="modal">
 
@@ -39,35 +52,27 @@ include "layout/head.php";
                     </form>
                 </div>
             </div>
-
-            <br>
-
-            <button class="collapsible">Categories:</button>
-            <div class="content">
-                <?php
-                for($i=0; $i<$Cats; $i++){
-                    echo '
-                    <a href="">Example category</a><br>
-                    ';
-                }
-                ?>
-            </div>
         </section>
 
         <section class="posts">
             <?php
             for($i=0; $i<$numberOfPosts; $i++){
+                $posterID = $forum->checkPosterID($postID[$i]);
+                $posterName = $forum->checkPosterName($postID[$i]);
+                $postTitle = $forum->checkPostTitle($postID[$i]);
+                $CatName = $forum->checkCategoryName($CatID[$i]);
+                $postContent = $forum->checkPostContent($postID[$i]);
                 echo '
                 <a class="post" href="">
-                <div class="post-content">
-                    <div class="post-header">
-                        <div class="post-name">Example Post Name</div>
-                        <div class="post-category">Category: Example</div>
+                    <div class="post-content">
+                        <div class="post-header">
+                            <div class="post-name">'.$postTitle.'</div>
+                            <div class="post-category">Category: '.$CatName.'</div>
+                        </div>
+                        <div class="post-body">
+                            <div>'.$postContent.'</div>
+                        </div>
                     </div>
-                    <div class="post-body">
-                        <div></div>
-                    </div>
-                </div>
                 </a>
                 ';
             }
