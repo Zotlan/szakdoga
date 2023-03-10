@@ -49,6 +49,12 @@ ul{
   border-color: goldenrod;
   height: 12vh;
 }
+.navbar>.container-fluid{
+  flex-wrap: nowrap;
+}
+.container-fluid{
+  height: 100%;
+}
 .ppic{
   width: 45px;
   height: 45px;

@@ -16,17 +16,28 @@ a:hover{
     text-decoration: none;
 }
 
+
 .toolbar{
+    position: sticky;
+    top: 0;
+    z-index: 9;
     display: flex;
     width: 30%;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.tools{
+    width: 80%;
+    min-height: 20vh;
+    border: 1px solid goldenrod;
+    margin: 20px auto auto auto;
 }
 .searchbar{
     width: 100%;
     display: flex;
     height: 30px;
     justify-content: start;
-    border-width: none;
 }
 .searchbar > form{
     display: flex;
@@ -38,12 +49,20 @@ a:hover{
 .s-bar{
     width: 60%;
     height: 100%;
-    border-right: 2px solid goldenrod;
+    border-left: 2px solid goldenrod;
     border-bottom: 2px solid goldenrod;
     border-top: none;
-    border-left: none;
+    border-right: none;
     background-color: #1A1925;
     color: goldenrod;
+    outline: none;
+}
+.s-bar:focus{
+    outline: none;
+    border-left: 2px solid goldenrod;
+    border-bottom: 2px solid goldenrod;
+    border-top: none;
+    border-right: none;
 }
 .s-button{
     background: none;
@@ -55,11 +74,21 @@ a:hover{
     border: none;
     outline: none;
 }
+.s-button:focus{
+    background: none;
+    border: none;
+    outline: none;
+}
 .s-button > img{
     height: 25px;
     width: 25px;
 }
-
+.collapsible-pos {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+}
 .collapsible {
     display: flex;
     background-color: #1A1925;
@@ -68,7 +97,8 @@ a:hover{
     width: 60%;
     border-top: none;
     border-bottom: none;
-    border-right: 2px solid goldenrod;
+    border-right: none;
+    border-left: 2px solid goldenrod;
     text-align: left;
     outline: none;
 }
@@ -76,21 +106,24 @@ a:hover{
     background-color: #1A1925;
     border-top: none;
     border-bottom: none;
-    border-right: 2px solid goldenrod;
+    border-right: none;
+    border-left: 2px solid goldenrod;
     outline: none;
 }
 .collapsible:focus{
     background-color: #1A1925;
     border-top: none;
     border-bottom: none;
-    border-right: 2px solid goldenrod;
+    border-right: none;
+    border-left: 2px solid goldenrod;
     outline: none;
 }
 .active:focus{
     background-color: #1A1925;
     border-top: none;
     border-bottom: none;
-    border-right: 2px solid goldenrod;
+    border-right: none;
+    border-left: 2px solid goldenrod;
     outline: none;
 }
 .content {
@@ -101,7 +134,8 @@ a:hover{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #1A1925;
-    border-right: 2px solid goldenrod;
+    border-right: none;
+    border-left: 2px solid goldenrod;
     border-bottom: 2px solid goldenrod;
 }
 
@@ -114,11 +148,11 @@ a:hover{
 }
 /* This is for the post modal*/
 .button-pos{
+    width: 100%;
     display: flex;
-    justify-content: left;
-    margin-left: 10%;
+    justify-content: center;
 }
-.p-button {
+.p-button{
     background-color: #1A1925;
     color: goldenrod;
     width: 100px;
@@ -134,59 +168,50 @@ a:hover{
     color: white;
     border-color: white;
 }
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+.p-button:focus{
+    outline: none;
 }
 
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
 
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
+.modal-button-pos{
+    display: flex;
+    justify-content: center;
 }
-
 .container {
     padding: 16px;
+    display: flex;
+    justify-content: center;
 }
-
-span.psw {
-    float: right;
-    padding-top: 16px;
+.container-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-/* The Modal (background) */
+.container-form > div{
+    width: 50%;
+}
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 10;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
 }
-
-/* Modal Content/Box */
-.modal-content {
+.modal-content{
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 30%;
 }
-
-/* The Close Button (x) */
+.container > div{
+    width: 100%;
+}
 .close {
     position: absolute;
     right: 25px;
@@ -195,38 +220,21 @@ span.psw {
     font-size: 35px;
     font-weight: bold;
 }
-
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: red;
     cursor: pointer;
 }
-
-/* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
-
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
-        width: 100%;
-    }
 }
 
 
@@ -237,13 +245,16 @@ span.psw {
     align-items: center;
     flex-direction: column;
 }
+.posts > div{
+    width: 80%;
+}
 .post{
     display: flex;
     width: 100%;
     align-items: center;
     border: 2px solid goldenrod;
     background-color: #1A1925;
-    margin: 10px;
+    margin: 10px 0 10px 0;
 }
 .post-content{
     width: 100%;
@@ -273,28 +284,57 @@ span.psw {
 }
 
 
-/* width */
 ::-webkit-scrollbar {
     width: 10px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
     background: #1A1925;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: darkgoldenrod;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: darkgoldenrod;
 }
-
 .chat_scroller {
     overflow-y: auto;
     scrollbar-color: darkgoldenrod #1A1925;
     scrollbar-width: thin;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .modal-content{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .modal-content{
+        width: 50%;
+    }
+    .collapsible, .content, .s-bar{
+        width: 80%;
+    }
+    .s-button{
+        width: 20%;
+    }
+}
+@media screen and (max-width: 425px) {
+    .toolbar{
+        width: 40%;
+        align-items: flex-end;
+    }
+    .tools{
+        width: 100%;
+        min-height: 20vh;
+        border: none;
+        margin: 0;
+    }
+    .posts{
+        width: 60%;
+        font-size: 3vw;
+    }
+    .modal-content{
+        width: 90%;
+    }
 }

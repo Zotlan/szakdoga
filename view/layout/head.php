@@ -19,7 +19,7 @@
     }
     ?>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<nav class="navbar navbar-dark sticky-top">
 
     <div class="container-fluid" id="navbarSupportedContent">
 
