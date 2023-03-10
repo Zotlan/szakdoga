@@ -17,11 +17,11 @@
         case 'student':
             if(isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])){
 
-                $email = $user->checkEmail($_POST["email"]);//valid=1
+                $email = $user->checkEmail(htmlspecialchars($_POST["email"]));//valid=1
 
-                $nickname = $user->checkUserName($_POST["username"]);//valid=1
+                $nickname = $user->checkUserName(htmlspecialchars($_POST["username"]));//valid=1
 
-                $password = $user->checkPassword($_POST["password"]);//valid=1
+                $password = $user->checkPassword(htmlspecialchars($_POST["password"]));//valid=1
             }
         break;
     }

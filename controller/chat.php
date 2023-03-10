@@ -50,7 +50,12 @@
 
     echo '
     <script  type="text/javascript">
-        setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 5000);
+        setInterval(function(){$("#room_view").load(location.href+" #room_view>*","");}, 2500);
+    </script>
+    ';
+    echo '
+    <script  type="text/javascript">
+        setInterval(function(){$("#rooms").load(location.href+" #rooms>*","");}, 1000);
     </script>
     ';
     echo '

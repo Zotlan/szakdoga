@@ -9,7 +9,7 @@ body {
     flex-wrap: wrap;
     height: 88vh;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 a:hover{
     color: darkgoldenrod;
@@ -18,7 +18,7 @@ a:hover{
 
 .toolbar{
     display: flex;
-    width: 25%;
+    width: 30%;
     flex-direction: column;
 }
 .searchbar{
@@ -29,6 +29,9 @@ a:hover{
     border-width: none;
 }
 .searchbar > form{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
     width: 100%;
     border: none;
 }
@@ -228,7 +231,7 @@ span.psw {
 
 
 .posts{
-    width: 50%;
+    width: 70%;
     height: 88vh;
     display: flex;
     align-items: center;
@@ -257,17 +260,15 @@ span.psw {
     align-items: center;
     border-bottom: 1px solid goldenrod;
 }
+.post-body{
+    overflow: hidden;
+}
 .post-name{
     margin-left: 10px;
+    width: 75%;
 }
 .post-category{
     margin-right: 10px;
-}
-
-
-.void{
-    display: flex;
-    height: 88vh;
     width: 25%;
 }
 

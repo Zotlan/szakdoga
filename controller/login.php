@@ -24,7 +24,7 @@
         case 'login':
             if(isset($_POST['username']) && isset($_POST['password'])){
 
-            $login = $user->checkLogin($_POST['username'], $_POST['password']);
+            $login = $user->checkLogin(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']));
 
             $loginResult = $loginReaction[$login];
 

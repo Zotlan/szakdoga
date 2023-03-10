@@ -11,7 +11,7 @@
             <div class="wrapper">
                 <form action="index.php" method="post">
                     <label for="email">Email:</label><br>
-                    <input type="text" name="email" placeholder="Please Enter Your Email Address" required><br>
+                    <input type="email" name="email" placeholder="Please Enter Your Email Address" required><br>
                     <label for="username">Username:</label><br>
                     <input type="text" name="username" placeholder="Please Enter Your Username" required><br>
                     <label for="password">Password:</label><br>

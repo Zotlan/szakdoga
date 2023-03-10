@@ -23,7 +23,8 @@ class Forum{
     }
     public function checkPostID(){
         $i = 0;
-        $sql = "SELECT post_id FROM post";
+        $ID[$i] = "";
+        $sql = "SELECT post_id FROM post ORDER BY post_time_stamp DESC";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
                 $ID[$i] = $row['post_id'];
@@ -34,7 +35,8 @@ class Forum{
     }
     public function checkPosterID($postID){
         $i = 0;
-        $sql = "SELECT poster_id FROM post WHERE post_id = '".$postID."'";
+        $ID[$i] = "";
+        $sql = "SELECT * FROM post WHERE post_id = '".$postID."'";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){
                 $ID[$i] = $row['poster_id'];
@@ -63,6 +65,16 @@ class Forum{
         }
         return $postTitle;
     }
+    public function checkPostCat($postID){
+        $postCat = "";
+        $sql = "SELECT cat_id FROM post WHERE post_id = '".$postID."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $postCat = $row["cat_id"];
+            }
+        }
+        return $postCat;
+    }
     public function checkPostContent($postID){
         $postContent = "";
         $sql = "SELECT post_content FROM post WHERE post_id = '".$postID."'";
@@ -88,6 +100,7 @@ class Forum{
     }
     public function checkCategoryID(){
         $i = 0;
+        $ID[$i] = "";
         $sql = "SELECT * FROM category";
         if($result = $this->db->dbselect($sql)) {
             while($row = $result->fetch_assoc()){

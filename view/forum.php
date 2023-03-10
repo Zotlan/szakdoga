@@ -56,18 +56,23 @@ include "layout/head.php";
 
         <section class="posts">
             <?php
-            for($i=0; $i<$numberOfPosts; $i++){
+                if($numberOfPosts != 0) {
+                    $postID = $forum->checkPostID();
+                }
+                for($i=0; $i<$numberOfPosts; $i++){
                 $posterID = $forum->checkPosterID($postID[$i]);
                 $posterName = $forum->checkPosterName($postID[$i]);
                 $postTitle = $forum->checkPostTitle($postID[$i]);
-                $CatName = $forum->checkCategoryName($CatID[$i]);
+                $postCatID = $forum->checkPostCat($postID[$i]);
+                $CatName = $forum->checkCategoryName($postCatID);
                 $postContent = $forum->checkPostContent($postID[$i]);
                 echo '
                 <a class="post" href="">
                     <div class="post-content">
                         <div class="post-header">
                             <div class="post-name">'.$postTitle.'</div>
-                            <div class="post-category">Category: '.$CatName.'</div>
+                            <label for="post-category">Category:</label><br>
+                            <div class="post-category" id="post-category">'.$CatName.'</div>
                         </div>
                         <div class="post-body">
                             <div>'.$postContent.'</div>
@@ -78,8 +83,6 @@ include "layout/head.php";
             }
             ?>
         </section>
-
-        <section class="void"></section>
     </div>
 <?php
 include "layout/footer.php";
