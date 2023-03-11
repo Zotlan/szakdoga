@@ -19,7 +19,6 @@
             <input type="hidden" name="page" value="login">
         </form>
         <p>New user? <a href="index.php?page=registry">Register</a>!</p>
-        <a href="index.php"><img src="assets/icons/home.png" width="40" height="40"></a>
     </div>
 </div>
 </body>

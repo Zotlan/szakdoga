@@ -52,6 +52,9 @@ ul{
 .navbar>.container-fluid{
   flex-wrap: nowrap;
 }
+.navbar-nav > .nav-item{
+  margin-right: 10px;
+}
 .container-fluid{
   height: 100%;
 }

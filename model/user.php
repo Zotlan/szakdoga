@@ -26,6 +26,7 @@ class User{
                         $loginResult = 2 ;//successful login
                         $_SESSION["username"] = $row['userName'];
                         $_SESSION["id"] = $row['userID'];
+                        $_SESSION["privilege"] = $row['userType'];
                     }
                     else{
                         $loginResult = 1 ;//incorrect password
@@ -43,13 +44,13 @@ class User{
     }
     public function uploadProfilePic(){
         $target_dir = "assets/profile_pictures/";
-        $target_file = $target_dir. $_SESSION['username'].".jpg";
+        $target_file = $target_dir. $_SESSION['id'].".jpg";
 
-        if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
-            echo "The file ". htmlspecialchars(basename($_FILES["profilePic"]["tmp_name"])). " has been uploaded.<br>";
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "Your Profile Picture Has Been Updated Successfully";
         }
         else {
-            echo "Sorry, there was an error uploading your file.<br>";
+            echo "We're Sorry, But There Was an Error While Updating Your Profile Picture.";
         }
     }
     //this function checks if the email address is valid so that it may be inserted into the database.

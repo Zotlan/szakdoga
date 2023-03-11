@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_name('zotlan');
     session_start();
@@ -13,7 +14,8 @@ session_name('zotlan');
         require $controllerFile;
     }
 
-// Generate a session ID based on the current URL
-$session_id = md5($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    // Generate a session ID based on the current URL
+    //This is from Horvath as he found it, only needed because we all share a server.
+    $session_id = md5($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 
-$_SESSION['session_id'] = $session_id;
+    $_SESSION['session_id'] = $session_id;

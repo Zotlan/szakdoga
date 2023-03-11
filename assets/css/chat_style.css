@@ -14,13 +14,9 @@ a:hover{
   color: darkgoldenrod;
   text-decoration: none;
 }
-/* === CONVERSATIONS === */
-.chatrooms {
-  height: 88vh;
-}
 .room_list{
   width: 100%;
-  height: 100%;
+  height: 90%;
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
@@ -54,21 +50,41 @@ a:hover{
   align-items: center;
 }
 
+
+.message-complete{
+  color:#515151;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 .photo {
   width: 50px;
   height: 50px;
   background: #1A1925;
   border-radius: 50px;
 }
-.message {
-  color:#515151;
+.photo-pos{
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px;
+}
+.message {
+  color:#515151;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 15px 15px;
+}
+.sender_name{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .message_text{
-  margin-left: 10px;
+  margin-left: 20px;
   display: flex;
   align-items: center;
 }
@@ -78,6 +94,7 @@ a:hover{
   height: 88vh;
   display: flex;
 }
+
 .footer-chat {
   width: 100%;
   bottom: 0;
@@ -89,6 +106,7 @@ a:hover{
   background-color: white;
   border-top: 2px solid goldenrod;
 }
+
 .send_ui{
   width: 85vw;
   height: 100%;
@@ -135,7 +153,6 @@ a:hover{
   height: 50px;
   vertical-align: center;
 }
-
 .message_field {
   border: 2px solid goldenrod;
   width: 85%;
@@ -145,10 +162,6 @@ a:hover{
   color: goldenrod;
 }
 
-.room_creator {
-  background: #101013;
-}
-
 
 .createRoomButton{
   color: goldenrod;
@@ -156,77 +169,79 @@ a:hover{
   background: transparent;
   outline: none;
 }
-
 .createRoomButton:focus{
   color: goldenrod;
   border: transparent;
   background: transparent;
   outline: none;
 }
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
   padding-top: 60px;
 }
-
-/* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  background-color: black;
+  border: 1px solid goldenrod;
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-/* The Close Button (x) */
-.close {
+.confirm{
+  background-color: white;
+  color: goldenrod;
+  border: 1px solid goldenrod;
+}
+.confirm:hover,
+.confirm:focus{
+  outline: none;
+}
+.deconfirm{
+  background-color: white;
+  color: goldenrod;
+  border: 1px solid goldenrod;
+}
+.deconfirm:hover,
+.deconfirm:focus{
+  outline: none;
+}
+.close{
   position: absolute;
   right: 25px;
   top: 0;
   color: #000;
   font-size: 35px;
-  font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: red;
   cursor: pointer;
 }
-
-/* Add Zoom Animation */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
-
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
 }
-
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
 }
-
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+
 }
 
 
@@ -234,14 +249,12 @@ a:hover{
   width: 0;
   height: 78vh;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+  transition: 0.2s;
 }
-
 .sidepanel a {
   text-decoration: none;
   font-size: 25px;
@@ -249,29 +262,38 @@ a:hover{
   display: block;
   transition: 0.3s;
 }
-
 .sidepanel a:hover {
   color: #f1f1f1;
 }
-
 .sidepanel .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
   font-size: 36px;
 }
-
 .openbtn {
   height: 100%;
   width: 100%;
   cursor: pointer;
   background-color: #111;
   color: white;
+  outline: none;
   border: none;
 }
-
 .openbtn:hover {
   background-color:#444;
+  outline: none;
+  border: none;
+}
+.openbtn:focus {
+  outline: none;
+  border: none;
+}
+.roomManagement{
+  font-size: 14px;
+  max-height: 10%;
+  display: flex;
+  flex-direction: row;
 }
 
 

@@ -320,6 +320,9 @@ a:hover{
     }
 }
 @media screen and (max-width: 425px) {
+    .uv{
+        height: 80vh;
+    }
     .toolbar{
         width: 40%;
         align-items: flex-end;

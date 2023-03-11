@@ -118,7 +118,17 @@ class Chatroom{
         }
         return $text;
     }
-    public function checkMessageSender($messageID){
+    public function checkMessageSenderID($messageID){
+        $user = "";
+        $sql = "SELECT * FROM messages WHERE message_id = '".$messageID."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $user = $row["user_id"];
+            }
+        }
+        return $user;
+    }
+    public function checkMessageSenderName($messageID){
         $user = "";
         $username = "";
         $sql = "SELECT * FROM messages WHERE message_id = '".$messageID."'";
@@ -137,9 +147,9 @@ class Chatroom{
     }
     public function createRoom($chatName, $currentUser){
         $createdRoomID = "";
-        $sql = "INSERT INTO chat (chat_id, chat_name, publicity, owner_id) VALUES (NULL,'".$chatName."',2,'".$_SESSION["id"]."')";
+        $sql = "INSERT INTO chat (chat_id, chat_name, publicity, owner_id) VALUES (NULL,'".$chatName."',2,'".$currentUser."')";
         $result = $this->db->dbinsert($sql);
-        $sql = "SELECT chat_id FROM chat WHERE chat_name = '".$chatName."'";
+        $sql = "SELECT chat_id FROM chat WHERE chat_name = '".$chatName."' AND owner_id = '".$currentUser."'";
         if($result = $this->db->dbselect($sql)) {
             if($row = $result->fetch_assoc()){
                 $createdRoomID = $row["chat_id"];
@@ -157,8 +167,6 @@ class Chatroom{
                 $invitedUser = $row["userID"];
             }
         }
-        echo $invitedUser;
-        echo $roomID;
         $sql = "SELECT * FROM membership WHERE user_id ='".$invitedUser."' AND chat_id = '".$roomID."'";
         if($result = $this->db->dbselect($sql)) {
             if($row = $result->fetch_assoc()){
@@ -167,7 +175,8 @@ class Chatroom{
         }
         return $inviteValid;
     }
-    public function inviteUser($userName,$roomID){
+
+    public function inviteUser($userName, $roomID){
         $invitedUser = 0;
         $sql = "SELECT * FROM user WHERE userName LIKE '".$userName."'";
         if($result = $this->db->dbselect($sql)) {
@@ -179,6 +188,50 @@ class Chatroom{
         $result = $this->db->dbinsert($sql);
     }
 
+    public function deleteRoom($currentRoom){
+        $sql = "DELETE FROM `chat` WHERE `chat_id` = '".$currentRoom."'";
+        $result = $this->db->dbDelete($sql);
+    }
+
+    public function checkMemberNumber($currentRoom){
+        $numberOfUsers = 0;
+        $sql = "SELECT * FROM membership WHERE chat_id = '".$currentRoom."'";
+        if($result = $this->db->dbselect($sql)) {
+            while($row = $result->fetch_assoc()){
+                if($row['membership_type'] == 2) {
+                    $numberOfUsers++;
+                }
+            }
+        }
+        return $numberOfUsers;
+    }
+    public function checkMemberIDs($currentRoom){
+        $i = 0;
+        $ID[$i] = "";
+        $sql = "SELECT * FROM membership WHERE chat_id = '".$currentRoom."'";
+        if($result = $this->db->dbselect($sql)) {
+            while($row = $result->fetch_assoc()){
+                if($row['membership_type'] != 1) {
+                    $ID[$i] = $row['user_id'];
+                    $i++;
+                }
+            }
+        }
+        return $ID;
+    }
+    public function checkMemberNames($memberID){
+        $sql = "SELECT * FROM user WHERE userID = '".$memberID."'";
+        if($result = $this->db->dbselect($sql)) {
+            if($row = $result->fetch_assoc()){
+                $memberName = $row["userName"];
+            }
+        }
+        return $memberName;
+    }
+    public function removeUser($selectedUserID, $currentRoom){
+        $sql = "DELETE FROM membership WHERE user_id = '".$selectedUserID."' AND chat_id = '".$currentRoom."'";
+        $result = $this->db->dbDelete($sql);
+    }
     public function sendMessage($message, $currentRoom){
         $sql = "INSERT INTO messages (message_id, user_id, message_content, message_timestamp, chat_id) VALUES (NULL,'".$_SESSION["id"]."','".$message."',NULL,'".$currentRoom."')";
         $result = $this->db->dbinsert($sql);

@@ -32,12 +32,16 @@ Class DataBase{
             die("SQL error: ". $this->conn->error);
         }
     }
-
     public function dbinsert($sql){
         if ($this->conn->query($sql) === TRUE) {} 
         else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
-            
+    }
+    public function dbDelete($sql){
+        if ($this->conn->query($sql) === TRUE) {}
+        else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+        }
     }
 }
