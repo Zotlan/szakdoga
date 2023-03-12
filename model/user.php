@@ -43,22 +43,21 @@ class User{
         return $loginResult;
     }
     public function uploadProfilePic(){
+        $response = "";
         $target_dir = "assets/profile_pictures/";
         $target_file = $target_dir. $_SESSION['id'].".jpg";
 
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "Your Profile Picture Has Been Updated Successfully";
+            $response = "Your Profile Picture Has Been Updated Successfully";
         }
         else {
-            echo "We're Sorry, But There Was an Error While Updating Your Profile Picture.";
+            $response = "We're Sorry, But There Was an Error While Updating Your Profile Picture.";
         }
+        return $response;
     }
     //this function checks if the email address is valid so that it may be inserted into the database.
     public function checkEmail($Email){
-
-        //$email = $_POST["email"];
         $emailValid = "";
-
         //checks if the email address is already registered
         $emailValid = 0;
         $sql="SELECT * FROM user WHERE userEmail = '".$_POST['email']."'";
@@ -75,12 +74,8 @@ class User{
         return $emailValid;
     }
 
-    //this function checks if the username is valid so that it may be inserted into the database.
-    //Doesn't work atm.
+    //This function checks if the username is valid so that it may be inserted into the database.
     public function checkUserName($Username){
-
-        //$Username = $_POST["username"];
-
         $userNameNotUsed = "";
 
         $sql = "SELECT * FROM user WHERE userName = '".$_POST['username']."'";
@@ -97,8 +92,7 @@ class User{
         return $userNameNotUsed;
     }
     
-    //this function checks if the password is valid so that it may be inserted into the database.
-    //This is Currently working.
+    //This function checks if the password is valid so that it may be inserted into the database.
     public function checkPassword($Password){
 
         //$Password = $_POST["password"];
@@ -126,9 +120,33 @@ class User{
         return $passwordValid;
     }
 
-    //this function inserts the userdata
+    //This function inserts the userdata
     public function registerStudent($Email, $Name, $Password){
         $sql = "INSERT INTO user (userID, userEmail, userName, userPassword, userType) VALUES (NULL,'".md5($Email)."','$Name','".md5($Password)."',1)";
         $result = $this->db->dbinsert($sql);
+    }
+
+    public function updateUserName($newUserName, $currentUser){
+        $response = "";
+        $sql = "UPDATE user SET userName= '".$newUserName."' WHERE userID = '".$currentUser."'";
+        $result = $this->db->dbUpdate($sql);
+        $response = "Your Username Has Been Updated Successfully";
+        return $response;
+    }
+
+    public function updateEmail($newEmail, $currentUser){
+        $response = "";
+        $sql = "UPDATE user SET userEmail= '".md5($newEmail)."' WHERE userID = '".$currentUser."'";
+        $result = $this->db->dbUpdate($sql);
+        $response = "Your Email Has Been Updated Successfully";
+        return $response;
+    }
+
+    public function updatePassword($newPassword, $currentUser){
+        $response = "";
+        $sql = "UPDATE user SET userPassword= '".md5($newPassword)."' WHERE userID = '".$currentUser."'";
+        $result = $this->db->dbUpdate($sql);
+        $response = "Your Password Has Been Updated Successfully";
+        return $response;
     }
 }

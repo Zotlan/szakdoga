@@ -6,65 +6,6 @@ include "layout/head.php";
 ?>
     <div class="uiv">
         <div class="uv">
-            <div id="mySidepanel" class="sidepanel">
-                    <div class="room_list chat_scroller" id="rooms">
-                        <?php
-                            for($i=0; $i<$publics; $i++){
-                                $chatName = $chat->checkRoomNames($publicIDs[$i]);
-                                if ($publicIDs[$i] == $currentRoom){
-                                    $class = "chatroom-active";
-                                }
-                                else{
-                                    $class = "chatroom";
-                                }
-                                echo '
-                            <a href="index.php?page=chat&currentRoom='.($publicIDs[$i]).'">
-                            <div class="'.$class.'">
-                            <div class="room_name">'.($chatName).'</div>
-                            </div >
-                            </a>';
-                            }
-                            if($privates != 0){
-                                for ($i = 0; $i < $privates; $i++) {
-                                    $chatName = $chat->checkRoomNames($privateIDs[$i]);
-                                    if ($privateIDs[$i] == $currentRoom) {
-                                        $class = "chatroom-active";
-                                    } else {
-                                        $class = "chatroom";
-                                    }
-                                    echo '
-                                        <a href="index.php?page=chat&currentRoom='.($privateIDs[$i]).'">
-                                        <div class="'.$class.'">
-                                            <div class="room_name">'.($chatName).'</div>
-                                        </div >
-                                        </a>';
-                                }
-                            }
-                        ?>
-                    </div>
-                    <div class="roomManagement">
-                        <?php
-                            echo'
-                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'roomModal'").').style.display='.htmlspecialchars("'flex'").'">
-                                    Create Room
-                                </button>
-                                ';
-                        if($currentRoom == $ownedRoom){
-                            echo'
-                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'inviteModal'").').style.display='.htmlspecialchars("'flex'").'">
-                                        Add User
-                                </button>
-                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'removeModal'").').style.display='.htmlspecialchars("'flex'").'">
-                                        Remove User
-                                </button>
-                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'deleteModal'").').style.display='.htmlspecialchars("'flex'").'">
-                                        Delete Room
-                                </button>
-                                ';
-                        }
-                        ?>
-                    </div>
-                </div>
             <div id="roomModal" class="modal">
                     <form class="modal-content animate" action="" method="post">
                         <div>
@@ -131,29 +72,90 @@ include "layout/head.php";
                     </form>
                 </div>
             <section class="chat">
-                <div class="room_view chat_scroller" id="room_view">
-                    <?php
-                    for($i=0; $i<$roomMessages; $i++){
-                        $userID = $chat->checkMessageSenderID($messageIDs[$i]);
-                        if (file_exists('assets/profile_pictures/'.$userID.'.jpg')) {
-                            $userPic = $userID;
-                        } else {
-                            $userPic = "default";
-                        }
-                        $userName = $chat->checkMessageSenderName($messageIDs[$i]);
-                        $text = $chat->checkMessageText($messageIDs[$i], $_REQUEST['currentRoom']);
-                        echo'
-                            <div class="message-complete">
-                                <div>
-                                    <img class="photo" src="assets/profile_pictures/'.$userPic.'.jpg" alt="">
+                <div class="chat_ui">
+                    <div id="mySidepanel" class="sidepanel">
+                        <div class="room_list chat_scroller" id="rooms">
+                            <?php
+                            for($i=0; $i<$publics; $i++){
+                                $chatName = $chat->checkRoomNames($publicIDs[$i]);
+                                if ($publicIDs[$i] == $currentRoom){
+                                    $class = "chatroom-active";
+                                }
+                                else{
+                                    $class = "chatroom";
+                                }
+                                echo '
+                            <a href="index.php?page=chat&currentRoom='.($publicIDs[$i]).'">
+                            <div class="'.$class.'">
+                            <div class="room_name">'.($chatName).'</div>
+                            </div >
+                            </a>';
+                            }
+                            if($privates != 0){
+                                for ($i = 0; $i < $privates; $i++) {
+                                    $chatName = $chat->checkRoomNames($privateIDs[$i]);
+                                    if ($privateIDs[$i] == $currentRoom) {
+                                        $class = "chatroom-active";
+                                    } else {
+                                        $class = "chatroom";
+                                    }
+                                    echo '
+                                <a href="index.php?page=chat&currentRoom='.($privateIDs[$i]).'">
+                                <div class="'.$class.'">
+                                    <div class="room_name">'.($chatName).'</div>
+                                </div >
+                                </a>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <div class="roomManagement">
+                            <?php
+                            echo'
+                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'roomModal'").').style.display='.htmlspecialchars("'flex'").'">
+                                    Create Room
+                                </button>
+                                ';
+                            if($currentRoom == $ownedRoom){
+                                echo'
+                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'inviteModal'").').style.display='.htmlspecialchars("'flex'").'">
+                                        Add User
+                                </button>
+                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'removeModal'").').style.display='.htmlspecialchars("'flex'").'">
+                                        Remove User
+                                </button>
+                                <button type="button" class="createRoomButton" id="createRoomButton" onclick="document.getElementById('.htmlspecialchars("'deleteModal'").').style.display='.htmlspecialchars("'flex'").'">
+                                        Delete Room
+                                </button>
+                                ';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="room_view chat_scroller" id="room_view">
+                        <?php
+                        for($i=0; $i<$roomMessages; $i++){
+                            $userID = $chat->checkMessageSenderID($messageIDs[$i]);
+                            if (file_exists('assets/profile_pictures/'.$userID.'.jpg')) {
+                                $userPic = $userID;
+                            } else {
+                                $userPic = "default";
+                            }
+                            $userName = $chat->checkMessageSenderName($messageIDs[$i]);
+                            $text = $chat->checkMessageText($messageIDs[$i], $_REQUEST['currentRoom']);
+                            echo'
+                                <div class="message-complete">
+                                    <div>
+                                        <img class="photo" src="assets/profile_pictures/'.$userPic.'.jpg" alt="">
+                                    </div>
+                                    <div class="message">
+                                        <div class="sender_name">'.$userName.'</div>
+                                        <div class="message_text">'.$text.'</div>
+                                    </div>
                                 </div>
-                                <div class="message">
-                                    <div class="sender_name">'.$userName.'</div>
-                                    <div class="message_text">'.$text.'</div>
-                                </div>
-                            </div>
-                            ';}
-                    ?>
+                                ';}
+                        ?>
+                    </div>
                 </div>
                 <?php
                 echo '

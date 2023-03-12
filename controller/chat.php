@@ -81,12 +81,25 @@
     <script>
         function toggleNav() {
             var x = document.getElementById("mySidepanel");
-            if (x.style.width === "250px") {
+            var y = document.getElementById("room_view");
+            if (window.innerWidth < 425){
+               if (x.style.width === "100%" && y.style.width === "0%") {
+                x.style.width = "0%";
+                y.style.width = "100%";
+                } else {
+                    x.style.width = "100%";
+                    y.style.width = "0%";
+                }
+            }
+            if (window.innerWidth >= 425){
+               if (x.style.width === "250px") {
                 x.style.width = "0px";
-            } else {
-                x.style.width = "250px";
+                } else {
+                    x.style.width = "250px";
+                }
             }
         }
+        
     </script>
     ';
 require "view/chat.php";

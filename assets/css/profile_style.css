@@ -1,9 +1,103 @@
-.profilePic{
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+.uv{
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.profilePic > img{
-    width: 100px;
-    height: 100px;
+
+.profile_ui{
+    height: 50%;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid goldenrod;
+    background-color: white;
+}
+
+.profile_pic_ui{
+    height: 100%;
+    width: 30%;
+    background-color: #1A1925;
+    border-right: 2px solid goldenrod;
+}
+.profile_pic{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.photo{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid goldenrod;
+    border-radius: 75px;
+}
+.photo > img{
+    width: 150px;
+    height: 150px;
+}
+
+.photo_form{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.update_tabs{
+    width: 70%;
+    height: 100%;
+}
+/* From w3schools.com */
+.tab {
+    height: 20%;
+    overflow: hidden;
+    border-bottom: 1px solid goldenrod;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.tab button:hover {
+    background-color: whitesmoke;
+}
+.tab button.active {
+    background-color: lightgray;
+}
+.tabcontent {
+    height: 80%;
+    display: none;
+    flex-direction: column;
+    padding: 6px 12px;
+    border-top: none;
+}
+.updateTitle{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.updateForm{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.updateResponse{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
